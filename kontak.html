@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak & Kerjasama - LKP-NexGen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .contact-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      /* CONTACT METHODS SECTION */
+      .contact-methods {
+        padding: 50px 0;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 50px 0;
+      }
+
+      .contact-card {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .contact-icon {
+        font-size: 2.5rem;
+        color: #4a6bff;
+        margin-bottom: 20px;
+      }
+
+      /* PARTNERSHIP SECTION */
+      .partnership-section {
+        background: #f9f9f9;
+        padding: 50px 0;
+      }
+
+      .partnership-steps {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .step {
+        flex: 0 0 calc(25% - 20px);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .step-number {
+        background: #4a6bff;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-weight: bold;
+      }
+
+      /* REQUIREMENTS SECTION */
+      .requirements {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* CONTACT FORM SECTION */
+      .contact-form-section {
+        padding: 50px 0;
+      }
+
+      .contact-form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+      }
+
+      .submit-btn {
+        background: #4a6bff;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #3a5bef;
+      }
+
+      /* FAQ SECTION */
+      .faq-section {
+        padding: 50px 0;
+        background: #f9f9f9;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+
+      .faq-question {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-answer {
+        display: none;
+        padding: 10px 0;
+      }
+
+      /* MAP SECTION */
+      .map-section {
+        padding: 0 0 50px;
+      }
+
+      .map-container {
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* RESPONSIVE STYLES */
+      @media (max-width: 768px) {
+        .step {
+          flex: 0 0 calc(50% - 15px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .step {
+          flex: 0 0 100%;
+        }
+
+        .contact-hero {
+          padding: 80px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR (Tidak diubah) -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo"><span>LKP</span>-NexGen</div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">☰</label>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="event.html">Event</a>
+          <a href="about.html">About</a>
+          <a href="kontak.html" class="active">Kontak</a>
+        </nav>
+        <div class="navbar-right">
+          <a href="upload.html" class="btn-upload">
+            <i class="fas fa-plus"></i> Upload Event
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION (Tidak diubah) -->
+    <section class="contact-hero">
+      <div class="container">
+        <h1>Hubungi Kami</h1>
+        <p>
+          Punya pertanyaan atau ingin bekerja sama dengan EventHub? Kami siap
+          membantu Anda.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT METHODS SECTION -->
+    <section class="contact-methods">
+      <div class="container">
+        <h2 style="text-align: center">Hubungi Kami dengan Berbagai Cara</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
+          Kami selalu siap membantu Anda melalui berbagai saluran komunikasi
+          yang tersedia
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Kami</h3>
+            <p>Untuk pertanyaan umum dan dukungan pelanggan</p>
+            <a href="mailto:info@eventhub.id">info@eventhub.id</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Telepon Kami</h3>
+            <p>Layanan pelanggan tersedia Senin-Jumat, 09.00-17.00 WIB</p>
+            <a href="tel:+622112345678">+62 21 1234 5678</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Kunjungi Kami</h3>
+            <p>Kantor pusat EventHub</p>
+            <address>
+              Jl. Sudirman No. 123, Jakarta Selatan, DKI Jakarta 12190
+            </address>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERSHIP SECTION -->
+    <section class="partnership-section">
+      <div class="container">
+        <h2 style="text-align: center">Kerjasama & Media Partner</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px">
+          EventHub membuka peluang kerjasama dengan berbagai pihak termasuk
+          event organizer, sponsor, media partner, dan komunitas. Mari
+          bersama-sama menciptakan ekosistem event yang lebih baik.
+        </p>
+
+        <div class="partnership-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Kirim Proposal</h4>
+            <p>
+              Ajukan proposal kerjasama melalui form kami atau email ke
+              partnership@eventhub.id
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Review Proposal</h4>
+            <p>Tim kami akan meninjau proposal dalam waktu 3-5 hari kerja</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Diskusi Lanjutan</h4>
+            <p>Kami akan menghubungi Anda untuk diskusi lebih lanjut</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Penandatanganan</h4>
+            <p>
+              Jika disetujui, kita akan lanjut ke tahap penandatanganan
+              kerjasama
+            </p>
+          </div>
+        </div>
+
+        <div class="requirements">
+          <h3 style="text-align: center; margin-top: 50px">Syarat Kerjasama</h3>
+
+          <h4>Untuk Event Organizer:</h4>
+          <ul style="margin-bottom: 20px">
+            <li>
+              Memiliki legalitas usaha (CV/PT) atau surat keterangan dari
+              komunitas
+            </li>
+            <li>
+              Memiliki pengalaman menyelenggarakan minimal 3 event sebelumnya
+            </li>
+            <li>Menyediakan informasi event yang lengkap dan akurat</li>
+          </ul>
+
+          <h4>Untuk Sponsor:</h4>
+          <ul style="margin-bottom: 20px">
+            <li>
+              Produk/jasa yang ditawarkan relevan dengan target peserta event
+            </li>
+            <li>Bersedia mematuhi ketentuan sponsorship yang berlaku</li>
+            <li>Menyediakan materi promosi sesuai standar EventHub</li>
+          </ul>
+
+          <h4>Untuk Media Partner:</h4>
+          <ul>
+            <li>Memiliki audiens yang relevan dengan target peserta event</li>
+            <li>
+              Bersedia mempromosikan event melalui kanal media yang dimiliki
+            </li>
+            <li>
+              Memiliki trafik pengunjung minimal 10.000/bulan (untuk media
+              online)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-form-section">
+      <div class="container">
+        <div class="contact-form-container">
+          <h2 style="text-align: center">Formulir Kontak</h2>
+          <p style="text-align: center; margin-bottom: 40px">
+            Isi formulir berikut untuk pertanyaan, masukan, atau permintaan
+            kerjasama
+          </p>
+
+          <form>
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" id="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Nomor Telepon/WhatsApp</label>
+              <input type="tel" id="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subjek</label>
+              <select id="subject">
+                <option value="">Pilih subjek...</option>
+                <option value="general">Pertanyaan Umum</option>
+                <option value="partnership">Permintaan Kerjasama</option>
+                <option value="event">Pertanyaan tentang Event</option>
+                <option value="feedback">Masukan/Saran</option>
+                <option value="other">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea id="message" required></textarea>
+            </div>
+
+            <div style="text-align: center">
+              <button type="submit" class="submit-btn">Kirim Pesan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 style="text-align: center">Pertanyaan yang Sering Diajukan</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
+          Temukan jawaban atas pertanyaan umum seputar EventHub dan layanan kami
+        </p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Bagaimana cara menjadi mitra EventHub?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Anda dapat mengajukan permohonan kerjasama melalui formulir di
+              halaman ini atau mengirim email langsung ke
+              partnership@eventhub.id dengan subjek "Permohonan Kerjasama".
+              Pastikan untuk menyertakan profil organisasi/perusahaan Anda dan
+              proposal kerjasama yang diinginkan.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Berapa lama waktu respon untuk permintaan kerjasama?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Tim kami akan merespon permintaan kerjasama dalam waktu 3-5 hari
+              kerja setelah proposal diterima. Untuk periode tertentu seperti
+              menjelang event besar, waktu respon mungkin sedikit lebih lama.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Apa keuntungan menjadi media partner EventHub?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Sebagai media partner, Anda akan mendapatkan eksposur kepada
+              audiens EventHub, akses ke data peserta event (dengan
+              persetujuan), kesempatan untuk menampilkan konten eksklusif, dan
+              komisi untuk setiap penjualan tiket yang berasal dari referensi
+              Anda.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Apakah EventHub menyediakan layanan event management?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Ya, kami menyediakan layanan event management lengkap mulai dari
+              perencanaan, promosi, pendaftaran peserta, hingga pelaporan.
+              Silakan hubungi kami untuk diskusi lebih lanjut tentang kebutuhan
+              spesifik event Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+      <div class="container">
+        <h2 style="text-align: center">Kunjungi Kantor Kami</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
+          Kami berada di lokasi strategis di Jakarta. Silakan datang untuk
+          pertemuan bisnis setelah membuat janji terlebih dahulu.
+        </p>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8191613506864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462a6a229a7f5e!2sJl.%20Sudirman%20No.123%2C%20RT.5%2FRW.3%2C%20Senayan%2C%20Kec.%20Kby.%20Baru%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012190!5e0!3m2!1sen!2sid!4v1621234567890!5m2!1sen!2sid"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (Tidak diubah) -->
+    <footer class="site-footer" aria-label="Footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span aria-hidden="true">🎉</span>
+              <h3>EventHub</h3>
+            </div>
+            <p class="footer-description">
+              Platform terbaik untuk menemukan dan mengelola event yang sesuai
+              dengan minat dan kebutuhan Anda.
+            </p>
+            <div class="footer-social">
+              <h4 class="social-title">Ikuti Kami</h4>
+              <ul class="social-links" role="list">
+                <li>
+                  <a href="#" aria-label="Instagram EventHub">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Twitter EventHub">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Facebook EventHub">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="LinkedIn EventHub">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="YouTube EventHub">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-heading">Navigasi</h4>
+            <ul role="list">
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="event.html">Event</a></li>
+              <li><a href="about.html">Tentang Kami</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+              <li><a href="upload.html">Upload Event</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-heading">Kategori</h4>
+            <ul role="list">
+              <li><a href="event.html?category=workshop">Workshop</a></li>
+              <li><a href="event.html?category=seminar">Seminar</a></li>
+              <li><a href="event.html?category=conference">Konferensi</a></li>
+              <li><a href="event.html?category=concert">Konser</a></li>
+              <li><a href="event.html?category=exhibition">Pameran</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4 class="footer-heading">Berlangganan Newsletter</h4>
+            <p>Dapatkan update event terbaru langsung ke email Anda</p>
+            <form
+              class="newsletter-form"
+              aria-label="Form berlangganan newsletter"
+            >
+              <div class="input-group">
+                <input
+                  type="email"
+                  placeholder="Alamat email Anda"
+                  aria-label="Masukkan alamat email"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="btn-subscribe"
+                  aria-label="Berlangganan"
+                >
+                  <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+            <div class="payment-methods">
+              <h4 class="footer-heading">Metode Pembayaran</h4>
+              <div class="payment-icons">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/196/196578.png"
+                  alt="Visa"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
+                  alt="Mastercard"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825454.png"
+                  alt="PayPal"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825462.png"
+                  alt="OVO"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825463.png"
+                  alt="Gopay"
+                  width="40"
+                  height="25"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>&copy; 2023 EventHub. Seluruh hak cipta dilindungi.</p>
+            <ul class="legal-links" role="list">
+              <li><a href="privacy.html">Kebijakan Privasi</a></li>
+              <li><a href="terms.html">Syarat & Ketentuan</a></li>
+              <li><a href="cookies.html">Kebijakan Cookie</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Script untuk FAQ accordion
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector("i");
+
+          if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+          } else {
+            answer.style.display = "block";
+            icon.classList.remove("fa-chevron-down");
+            icon.classList.add("fa-chevron-up");
+          }
+        });
+      });
+
+      // Script untuk form submission (simulasi)
+      const contactForm = document.querySelector("form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          alert(
+            "Terima kasih atas pesan Anda! Tim kami akan segera menghubungi Anda."
+          );
+          contactForm.reset();
+        });
+      }
+    </script>
+  </body>
+</html>

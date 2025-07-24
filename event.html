@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexGen - Temukan Eventmu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #6c63ff 0%, #4d44db 100%);
+        color: white;
+        text-align: center;
+        height: 400px; /* tinggi tetap */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      .search-bar {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        background: white;
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 15px 20px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      .search-bar button {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 0 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .search-bar button:hover {
+        background-color: #e04f6d;
+      }
+
+      /* Category Section */
+      .categories {
+        background-color: white;
+        padding: 60px 0;
+        margin: 40px 0;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+      }
+
+      .category-card {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .category-card:hover {
+        background-color: var(--primary);
+        color: white;
+        transform: translateY(-5px);
+      }
+
+      .category-card i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: var(--primary);
+      }
+
+      .category-card:hover i {
+        color: white;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 60px 0 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+
+      .footer-logo p {
+        color: #aaa;
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--primary);
+      }
+
+      .footer-links h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-links h4:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #aaa;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-subscribe h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-subscribe h4:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      .footer-subscribe p {
+        color: #aaa;
+        margin-bottom: 15px;
+      }
+
+      .footer-subscribe form {
+        display: flex;
+      }
+
+      .footer-subscribe input {
+        flex: 1;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+      }
+
+      .footer-subscribe button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 0 20px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .footer-subscribe button:hover {
+        background-color: var(--secondary);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #444;
+        padding: 20px 0;
+        text-align: center;
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom a {
+        color: #aaa;
+        transition: color 0.3s;
+      }
+
+      .footer-bottom a:hover {
+        color: white;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .card-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .menu-toggle:checked ~ nav {
+          display: flex;
+        }
+
+        nav {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          padding: 20px;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          z-index: 999;
+        }
+
+        .btn-upload {
+          display: none;
+        }
+
+        .btn-upload-mobile {
+          display: flex;
+          margin-top: 15px;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          padding: 60px 0;
+        }
+
+        .search-bar {
+          flex-direction: column;
+          border-radius: 10px;
+        }
+
+        .search-bar input {
+          border-radius: 10px 10px 0 0;
+        }
+
+        .search-bar button {
+          padding: 15px;
+          border-radius: 0 0 10px 10px;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div class="logo"><span>LKP</span>-NexGen</div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">☰</label>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="event.html" class="active">Event</a>
+          <a href="about.html">About</a>
+          <a href="kontak.html">Kontak</a>
+          <a href="upload.html" class="btn-upload-mobile">
+            <i class="fas fa-plus"></i> Upload Event
+          </a>
+        </nav>
+        <div class="navbar-right">
+          <a href="upload.html" class="btn-upload">
+            <i class="fas fa-plus"></i> Upload Event
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <h1>Temukan Event Seru di Sekitarmu</h1>
+        <p>
+          Jelajahi berbagai event menarik mulai dari seminar, workshop, konser,
+          hingga pameran. Tingkatkan pengetahuan dan jaringan profesionalmu
+          bersama kami.
+        </p>
+        <!-- FILTER SECTION -->
+        <section class="container">
+          <div class="filter-section">
+            <input type="text" placeholder="Kata kunci..." />
+            <select>
+              <option>Semua Kategori</option>
+              <option>Workshop</option>
+              <option>Seminar</option>
+              <option>Lomba</option>
+              <option>Konser</option>
+              <option>Pameran</option>
+            </select>
+            <select>
+              <option>Semua Tipe</option>
+              <option>Online</option>
+              <option>Offline</option>
+              <option>Hybrid</option>
+            </select>
+            <select>
+              <option>Semua Harga</option>
+              <option>Gratis</option>
+              <option>Berbayar</option>
+            </select>
+            <input type="date" />
+            <button><i class="fas fa-search"></i> Cari</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- EVENT SECTION -->
+    <section class="events container">
+      <div class="section-header">
+        <h2>Event Minggu Ini</h2>
+        <a href="#" class="view-all"
+          >Lihat Semua <i class="fas fa-chevron-right"></i
+        ></a>
+      </div>
+
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-badge gratis">Gratis</div>
+          <img
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 25 Mei 2025
+            </div>
+            <h3>Seminar Digital Marketing</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Online
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Seminar</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 150.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 30 Mei 2025
+            </div>
+            <h3>Desain Grafis</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Coworking Space, Kebumen
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Desain</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-badge gratis">Rp 20.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 1 Juni 2025
+            </div>
+            <h3>Festival Lomba Sosial Media</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Alun-Alun, Kebumen
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Lomba</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 75.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 3 Juni 2025
+            </div>
+            <h3>Pameran Teknologi Terkini</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> JIExpo Kemayoran, Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Pameran</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT BULAN INI -->
+    <section class="events container">
+      <div class="section-header">
+        <h2>Event Bulan Ini</h2>
+        <a href="#" class="view-all"
+          >Lihat Semua <i class="fas fa-chevron-right"></i
+        ></a>
+      </div>
+
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-badge gratis">Rp 200.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 10 Juni 2025
+            </div>
+            <h3>Pelatihan Digital Marketing</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> GoWork, SCBD Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Pelatihan</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 200.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 15 Juni 2025
+            </div>
+            <h3>Komputer Dasar Masterclass</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> The Westin, Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Pelatihan</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-badge gratis">Gratis</div>
+          <img
+            src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 20 Juni 2025
+            </div>
+            <h3>Career Fair 2025</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> ICE BSD, Tangerang
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Karir</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 120.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 25 Juni 2025
+            </div>
+            <h3>UI/UX Design Workshop</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Coworking Space, Surabaya
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Workshop</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENT TAHUN INI -->
+    <section class="events container">
+      <div class="section-header">
+        <h2>Event Tahun Ini</h2>
+        <a href="#" class="view-all"
+          >Lihat Semua <i class="fas fa-chevron-right"></i
+        ></a>
+      </div>
+
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 300.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 12 Juli 2025
+            </div>
+            <h3>Java Jazz Festival</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> JIExpo Kemayoran, Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Konser</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-badge gratis">Gratis</div>
+          <img
+            src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 15 Agustus 2025
+            </div>
+            <h3>Konferensi Pendidikan Nasional</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Grand Sahid Jaya, Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Konferensi</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 250.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 5 September 2025
+            </div>
+            <h3>Fintech Summit Indonesia</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Bali Nusa Dua Convention
+              Center
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Summit</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-badge berbayar">Rp 500.000</div>
+          <img
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="event"
+          />
+          <div class="card-content">
+            <div class="card-date">
+              <i class="far fa-calendar-alt"></i> 10 Desember 2025
+            </div>
+            <h3>Tech in Asia Conference</h3>
+            <div class="card-location">
+              <i class="fas fa-map-marker-alt"></i> Sheraton Grand, Jakarta
+            </div>
+            <div class="card-footer">
+              <div class="card-category">Konferensi</div>
+              <a
+                href="javascript:void(0)"
+                class="card-button"
+                onclick="navigateToEvent()"
+                >Daftar Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories">
+      <div class="container">
+        <div class="section-header">
+          <h2>Jelajahi Kategori</h2>
+          <a href="#" class="view-all"
+            >Lihat Semua <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+        <div class="category-grid">
+          <div class="category-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Teknologi</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Pendidikan</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-music"></i>
+            <h3>Musik</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Karir</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Seni</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-utensils"></i>
+            <h3>Kuliner</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-running"></i>
+            <h3>Olahraga</h3>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-heart"></i>
+            <h3>Kesehatan</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" aria-label="Footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span aria-hidden="true">🎉</span>
+              <h3>EventHub</h3>
+            </div>
+            <p class="footer-description">
+              Platform terbaik untuk menemukan dan mengelola event yang sesuai
+              dengan minat dan kebutuhan Anda.
+            </p>
+            <div class="footer-social">
+              <h4 class="social-title">Ikuti Kami</h4>
+              <ul class="social-links" role="list">
+                <li>
+                  <a href="#" aria-label="Instagram EventHub">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Twitter EventHub">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Facebook EventHub">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="LinkedIn EventHub">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="YouTube EventHub">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-heading">Navigasi</h4>
+            <ul role="list">
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="event.html">Event</a></li>
+              <li><a href="about.html">Tentang Kami</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+              <li><a href="upload.html">Upload Event</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-heading">Kategori</h4>
+            <ul role="list">
+              <li><a href="event.html?category=workshop">Workshop</a></li>
+              <li><a href="event.html?category=seminar">Seminar</a></li>
+              <li><a href="event.html?category=conference">Konferensi</a></li>
+              <li><a href="event.html?category=concert">Konser</a></li>
+              <li><a href="event.html?category=exhibition">Pameran</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4 class="footer-heading">Berlangganan Newsletter</h4>
+            <p>Dapatkan update event terbaru langsung ke email Anda</p>
+            <form
+              class="newsletter-form"
+              aria-label="Form berlangganan newsletter"
+            >
+              <div class="input-group">
+                <input
+                  type="email"
+                  placeholder="Alamat email Anda"
+                  aria-label="Masukkan alamat email"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="btn-subscribe"
+                  aria-label="Berlangganan"
+                >
+                  <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+            <div class="payment-methods">
+              <h4 class="footer-heading">Metode Pembayaran</h4>
+              <div class="payment-icons">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/196/196578.png"
+                  alt="Visa"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
+                  alt="Mastercard"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825454.png"
+                  alt="PayPal"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825462.png"
+                  alt="OVO"
+                  width="40"
+                  height="25"
+                />
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/825/825463.png"
+                  alt="Gopay"
+                  width="40"
+                  height="25"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>&copy; 2023 EventHub. Seluruh hak cipta dilindungi.</p>
+            <ul class="legal-links" role="list">
+              <li><a href="privacy.html">Kebijakan Privasi</a></li>
+              <li><a href="terms.html">Syarat & Ketentuan</a></li>
+              <li><a href="cookies.html">Kebijakan Cookie</a></li>
+            </ul>
+          </div>
+          <div class="footer-credits">
+            <p>
+              Dibuat dengan <i class="fas fa-heart" aria-hidden="true"></i> di
+              Jakarta, Indonesia
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function navigateToEvent() {
+        // In a real implementation, this would navigate to the event detail page
+        alert("Anda akan diarahkan ke halaman detail event");
+        // window.location.href = 'event-detail.html';
+      }
+
+      // Responsive menu toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelectorAll("nav a");
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              menuToggle.checked = false;
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Event - EventHub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* ===== VARIABLES ===== */
+      :root {
+        --primary: #4f46e5;
+        --primary-light: #6366f1;
+        --secondary: #10b981;
+        --dark: #1f2937;
+        --gray: #6b7280;
+        --light-gray: #f3f4f6;
+        --white: #ffffff;
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --border-radius: 10px;
+        --transition: all 0.3s ease;
+      }
+
+      /* ===== BASE STYLES ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f9fafb;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* ===== UTILITY CLASSES ===== */
+      .flex {
+        display: flex;
+      }
+
+      .flex-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .flex-center {
+        display: flex;
+        align-items: center;
+      }
+
+      .grid {
+        display: grid;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        padding: 30px;
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-light);
+      }
+
+      .btn-block {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ===== EVENT DETAIL STYLES ===== */
+      .event-header {
+        margin-bottom: 30px;
+      }
+
+      .event-header h1 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+      }
+
+      .event-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .event-category {
+        background-color: var(--primary);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .event-date,
+      .event-location {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--gray);
+        font-size: 0.95rem;
+      }
+
+      .event-content {
+        display: flex;
+        gap: 30px;
+      }
+
+      .event-main {
+        flex: 2;
+      }
+
+      .event-sidebar {
+        flex: 1;
+      }
+
+      .event-image {
+        width: 100%;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .event-image img {
+        transition: var(--transition);
+      }
+
+      .event-image:hover img {
+        transform: scale(1.02);
+      }
+
+      .event-description h2 {
+        font-size: 1.5rem;
+        color: var(--dark);
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .event-description h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      .event-description p {
+        margin-bottom: 15px;
+        color: var(--dark);
+      }
+
+      .event-description ul {
+        margin: 20px 0;
+        padding-left: 20px;
+      }
+
+      .event-description li {
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      /* ===== SCHEDULE STYLES ===== */
+      .event-schedule {
+        background-color: var(--light-gray);
+        padding: 25px;
+        border-radius: var(--border-radius);
+        margin-bottom: 30px;
+      }
+
+      .event-schedule h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+
+      .schedule-item {
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .schedule-item:last-child {
+        border-bottom: none;
+      }
+
+      .schedule-time {
+        width: 150px;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .schedule-desc {
+        flex: 1;
+        color: var(--dark);
+      }
+
+      /* ===== SPEAKERS SECTION ===== */
+      .event-speakers {
+        margin-top: 40px;
+      }
+
+      .event-speakers h2 {
+        font-size: 1.5rem;
+        color: var(--dark);
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .event-speakers h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary);
+      }
+
+      .speakers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      .speaker-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid #e5e7eb;
+      }
+
+      .speaker-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .speaker-image {
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+      }
+
+      .speaker-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .speaker-card:hover .speaker-image img {
+        transform: scale(1.05);
+      }
+
+      .speaker-info {
+        padding: 20px;
+      }
+
+      .speaker-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+
+      .speaker-title {
+        color: var(--primary);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .speaker-bio {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      /* ===== TICKET BOX STYLES ===== */
+      .ticket-box {
+        position: sticky;
+        top: 100px;
+        margin-bottom: 30px;
+      }
+
+      .ticket-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .ticket-header h3 {
+        font-size: 1.3rem;
+        color: var(--dark);
+      }
+
+      .ticket-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .ticket-details {
+        margin-bottom: 25px;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .detail-item i {
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin-top: 3px;
+      }
+
+      .detail-label {
+        font-size: 0.85rem;
+        color: var(--gray);
+        margin-bottom: 3px;
+      }
+
+      .detail-value {
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      /* ===== REGISTRATION MODAL STYLES ===== */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .registration-modal {
+        background-color: var(--white);
+        width: 100%;
+        max-width: 600px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-overlay.active .registration-modal {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        background-color: var(--primary);
+        color: var(--white);
+        padding: 20px 30px;
+        position: relative;
+      }
+
+      .modal-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .modal-header p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .modal-body {
+        padding: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        outline: none;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+
+      .form-col {
+        flex: 1;
+      }
+
+      .payment-options {
+        display: flex;
+        gap: 15px;
+        margin: 15px 0;
+      }
+
+      .payment-option {
+        flex: 1;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 15px;
+        cursor: pointer;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .payment-option.selected {
+        border-color: var(--primary);
+        background-color: rgba(79, 70, 229, 0.05);
+      }
+
+      .payment-option:hover {
+        border-color: var(--primary-light);
+      }
+
+      .payment-option img {
+        height: 30px;
+        margin: 0 auto 10px;
+      }
+
+      .form-group .hint {
+        font-size: 0.85rem;
+        color: var(--gray);
+        margin-top: 5px;
+      }
+
+      .modal-footer {
+        padding: 20px 30px;
+        background-color: var(--light-gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .total-price {
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .total-price span {
+        color: var(--primary);
+      }
+
+      .registration-success {
+        padding: 30px;
+        text-align: center;
+        display: none;
+      }
+
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #ecfdf5;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .success-icon i {
+        font-size: 40px;
+        color: var(--secondary);
+      }
+
+      .registration-success h3 {
+        font-size: 1.5rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+      }
+
+      .registration-success p {
+        color: var(--gray);
+        margin-bottom: 20px;
+      }
+
+      /* Form validation styles */
+      .error-message {
+        color: #ef4444;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .form-group.error input,
+      .form-group.error select {
+        border-color: #ef4444;
+      }
+
+      .form-group.error .error-message {
+        display: block;
+      }
+
+      /* Loading spinner */
+      .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+        display: none;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .btn-submit.loading .spinner {
+        display: inline-block;
+      }
+
+      /* ===== RESPONSIVE STYLES ===== */
+      @media (max-width: 992px) {
+        .event-content {
+          flex-direction: column;
+        }
+
+        .event-sidebar {
+          margin-top: 30px;
+        }
+
+        .ticket-box {
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar .container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-links {
+          position: static;
+          transform: none;
+          margin: 20px 0;
+          flex-wrap: wrap;
+        }
+
+        .navbar-right {
+          margin-left: 0;
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .event-header h1 {
+          font-size: 2rem;
+        }
+
+        .event-meta {
+          gap: 15px;
+        }
+
+        .speakers-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .speaker-image {
+          height: 180px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .payment-options {
+          flex-direction: column;
+        }
+
+        .modal-footer {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .total-price {
+          margin-bottom: 10px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .schedule-item {
+          flex-direction: column;
+        }
+
+        .schedule-time {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+
+        .speakers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .speaker-image {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">🎉 <span>Event</span>Hub</div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">☰</label>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="event.html" class="active">Event</a>
+          <a href="about.html">About</a>
+          <a href="kontak.html">Kontak</a>
+          <a href="upload.html" class="btn-upload-mobile">
+            <i class="fas fa-plus"></i> Upload Event
+          </a>
+        </nav>
+        <div class="navbar-right">
+          <a href="upload.html" class="btn-upload">
+            <i class="fas fa-plus"></i> Upload Event
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- EVENT DETAIL SECTION -->
+    <main class="section container">
+      <div class="event-header">
+        <h1>Webinar AI & Data Science 2025</h1>
+        <div class="event-meta">
+          <span class="event-category">Workshop</span>
+          <span class="event-date"
+            ><i class="far fa-calendar-alt"></i> 30 Mei 2025</span
+          >
+          <span class="event-location"
+            ><i class="fas fa-map-marker-alt"></i> Jakarta Convention
+            Center</span
+          >
+        </div>
+      </div>
+
+      <div class="event-content">
+        <div class="event-main">
+          <div class="event-image">
+            <img
+              src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80"
+              alt="Webinar AI"
+            />
+          </div>
+
+          <article class="event-description card">
+            <h2>Tentang Event</h2>
+            <p>
+              Webinar ini akan membahas perkembangan terbaru dalam bidang AI dan
+              Data Science, dengan pembicara dari perusahaan teknologi
+              terkemuka. Anda akan mempelajari:
+            </p>
+            <ul>
+              <li>Konsep dasar AI dan Machine Learning</li>
+              <li>Implementasi Data Science di industri</li>
+              <li>Tools dan framework terbaru</li>
+              <li>Studi kasus nyata</li>
+            </ul>
+            <p>
+              Acara ini cocok untuk pemula hingga profesional yang ingin
+              meng-update pengetahuannya.
+            </p>
+
+            <section class="event-schedule">
+              <h2>Jadwal Acara</h2>
+              <div class="schedule-item">
+                <div class="schedule-time">09:00 - 10:00</div>
+                <div class="schedule-desc">Registrasi Peserta</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">10:00 - 12:00</div>
+                <div class="schedule-desc">Sesi 1: Pengenalan AI</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">12:00 - 13:00</div>
+                <div class="schedule-desc">Istirahat Makan Siang</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">13:00 - 15:00</div>
+                <div class="schedule-desc">Sesi 2: Workshop Praktis</div>
+              </div>
+            </section>
+
+            <!-- PEMATERI/NARASUMBER SECTION -->
+            <section class="event-speakers">
+              <h2>Pemateri & Narasumber</h2>
+              <div class="speakers-grid">
+                <article class="speaker-card">
+                  <div class="speaker-image">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/44.jpg"
+                      alt="Dr. Sarah Wijaya"
+                    />
+                  </div>
+                  <div class="speaker-info">
+                    <h3 class="speaker-name">Dr. Sarah Wijaya</h3>
+                    <p class="speaker-title">Head of AI Research at TechNova</p>
+                    <p class="speaker-bio">
+                      Pakar AI dengan 10+ tahun pengalaman di bidang machine
+                      learning dan neural networks.
+                    </p>
+                  </div>
+                </article>
+                <article class="speaker-card">
+                  <div class="speaker-image">
+                    <img
+                      src="https://randomuser.me/api/portraits/men/32.jpg"
+                      alt="Michael Chen"
+                    />
+                  </div>
+                  <div class="speaker-info">
+                    <h3 class="speaker-name">Michael Chen</h3>
+                    <p class="speaker-title">Data Science Lead at GoData</p>
+                    <p class="speaker-bio">
+                      Spesialis dalam implementasi data science untuk bisnis dan
+                      industri.
+                    </p>
+                  </div>
+                </article>
+                <article class="speaker-card">
+                  <div class="speaker-image">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/68.jpg"
+                      alt="Dr. Anisa Putri"
+                    />
+                  </div>
+                  <div class="speaker-info">
+                    <h3 class="speaker-name">Dr. Anisa Putri</h3>
+                    <p class="speaker-title">AI Ethics Researcher</p>
+                    <p class="speaker-bio">
+                      Fokus pada aspek etika dan sosial dalam pengembangan
+                      teknologi AI.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </article>
+        </div>
+
+        <aside class="event-sidebar">
+          <div class="ticket-box card">
+            <div class="ticket-header">
+              <h3>Pendaftaran</h3>
+              <div class="ticket-price">Rp 150.000</div>
+            </div>
+
+            <div class="ticket-details">
+              <div class="detail-item">
+                <i class="fas fa-calendar-day"></i>
+                <div>
+                  <div class="detail-label">Tanggal</div>
+                  <div class="detail-value">30 Mei 2025</div>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <div class="detail-label">Waktu</div>
+                  <div class="detail-value">09:00 - 15:00 WIB</div>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <div class="detail-label">Lokasi</div>
+                  <div class="detail-value">
+                    Jakarta Convention Center, Hall A
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button id="registerBtn" class="btn btn-primary btn-block">
+              Daftar Sekarang
+            </button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- REGISTRATION MODAL -->
+    <div class="modal-overlay" id="registrationModal">
+      <div class="registration-modal">
+        <div class="modal-header">
+          <h3>Formulir Pendaftaran</h3>
+          <p>Webinar AI & Data Science 2025</p>
+          <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <form id="registrationForm">
+          <div class="modal-body">
+            <!-- Personal Information -->
+            <div class="form-group">
+              <label for="fullname">Nama Lengkap</label>
+              <input type="text" id="fullname" name="fullname" required />
+              <div class="error-message">Nama lengkap harus diisi</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-col">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                  <div class="error-message">Email tidak valid</div>
+                </div>
+              </div>
+              <div class="form-col">
+                <div class="form-group">
+                  <label for="phone">No. Telepon</label>
+                  <input type="tel" id="phone" name="phone" required />
+                  <div class="error-message">Nomor telepon tidak valid</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="institution">Institusi / Perusahaan</label>
+              <input type="text" id="institution" name="institution" />
+            </div>
+
+            <!-- Payment Information -->
+            <div class="form-group">
+              <label>Metode Pembayaran</label>
+              <div class="payment-options">
+                <div class="payment-option selected">
+                  <img
+                    src="https://via.placeholder.com/100x30?text=Bank+Transfer"
+                    alt="Bank Transfer"
+                  />
+                  <div>Bank Transfer</div>
+                </div>
+                <div class="payment-option">
+                  <img
+                    src="https://via.placeholder.com/100x30?text=E-Wallet"
+                    alt="E-Wallet"
+                  />
+                  <div>E-Wallet</div>
+                </div>
+                <div class="payment-option">
+                  <img
+                    src="https://via.placeholder.com/100x30?text=Credit+Card"
+                    alt="Credit Card"
+                  />
+                  <div>Credit Card</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Catatan Tambahan (Opsional)</label>
+              <textarea id="notes" name="notes" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="total-price">
+              Total Pembayaran: <span>Rp 150.000</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">
+              <span class="spinner"></span>
+              Lanjutkan Pembayaran
+            </button>
+          </div>
+        </form>
+
+        <div class="registration-success">
+          <div class="success-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h3>Pendaftaran Berhasil!</h3>
+          <p>
+            Kami telah mengirimkan detail pembayaran ke email Anda. Silakan cek
+            inbox atau folder spam Anda.
+          </p>
+          <button class="btn btn-primary" id="closeSuccessModal">Tutup</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Modal functionality
+      const registerBtn = document.getElementById("registerBtn");
+      const registrationModal = document.getElementById("registrationModal");
+      const closeModal = document.getElementById("closeModal");
+      const closeSuccessModal = document.getElementById("closeSuccessModal");
+      const registrationForm = document.getElementById("registrationForm");
+      const paymentOptions = document.querySelectorAll(".payment-option");
+
+      // Show modal when register button is clicked
+      registerBtn.addEventListener("click", () => {
+        registrationModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      // Close modal when close button is clicked
+      closeModal.addEventListener("click", () => {
+        registrationModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      });
+
+      // Close modal when clicking outside of it
+      registrationModal.addEventListener("click", (e) => {
+        if (e.target === registrationModal) {
+          registrationModal.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      // Payment option selection
+      paymentOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          paymentOptions.forEach((opt) => opt.classList.remove("selected"));
+          option.classList.add("selected");
+        });
+      });
+
+      // Form submission
+      registrationForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Validate form
+        let isValid = true;
+        const requiredFields = ["fullname", "email", "phone"];
+
+        requiredFields.forEach((field) => {
+          const input = document.getElementById(field);
+          const errorMsg = input.nextElementSibling;
+
+          if (!input.value.trim()) {
+            input.parentElement.classList.add("error");
+            isValid = false;
+          } else {
+            input.parentElement.classList.remove("error");
+          }
+
+          // Additional email validation
+          if (
+            field === "email" &&
+            input.value.trim() &&
+            !/^\S+@\S+\.\S+$/.test(input.value)
+          ) {
+            input.parentElement.classList.add("error");
+            errorMsg.textContent = "Format email tidak valid";
+            isValid = false;
+          }
+        });
+
+        if (!isValid) return;
+
+        // Show loading spinner
+        const submitBtn = document.querySelector(".btn-submit");
+        submitBtn.classList.add("loading");
+
+        // Simulate form submission
+        setTimeout(() => {
+          submitBtn.classList.remove("loading");
+
+          // Hide form and show success message
+          registrationForm.style.display = "none";
+          document.querySelector(".registration-success").style.display =
+            "block";
+        }, 1500);
+      });
+
+      // Close modal after successful registration
+      closeSuccessModal.addEventListener("click", () => {
+        registrationModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        // Reset form for next use
+        registrationForm.reset();
+        registrationForm.style.display = "block";
+        document.querySelector(".registration-success").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
