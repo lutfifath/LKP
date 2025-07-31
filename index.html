@@ -35,27 +35,6 @@
             }
         }
 
-        #team .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    #team .team-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .team-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-
         .card-hover{transition:all .3s ease}.card-hover:hover{transform:translateY(-5px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}.hero-gradient{background:linear-gradient(180deg,#3b82f6 0%,#dbeafe 100%)}.btn-gold{background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%)}.btn-blue{background:linear-gradient(135deg,#2563eb 0%,#1e40af 100%)}.team-grid-container{position:relative}@media (min-width:1024px){.team-card::before{display:none}.team-card{z-index:1}.team-grid-container::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(to right,#e5e7eb,#e5e7eb),linear-gradient(to bottom,#e5e7eb,#e5e7eb),linear-gradient(to bottom,#e5e7eb,#e5e7eb),linear-gradient(to bottom,#e5e7eb,#e5e7eb),linear-gradient(to bottom,#e5e7eb,#e5e7eb);background-repeat:no-repeat;background-size:75% 2px,2px 100%,2px 100%,2px 100%,2px 100%;background-position:center 48px,12.5% 0,37.5% 0,62.5% 0,87.5% 0}}.team-card{position:relative;min-height:320px;display:flex;flex-direction:column}.team-card-content{flex-grow:1;display:flex;flex-direction:column;justify-content:space-between}@media (max-width:1023px){.team-grid-container::after{display:none}.team-grid-container::before{content:'';position:absolute;left:20px;top:48px;bottom:48px;width:2px;background-color:#e5e7eb;z-index:0}.team-card{margin-left:48px;text-align:left}.team-card img{margin-left:0;margin-right:auto}.team-card-content{text-align:left}.team-card .flex.justify-center{justify-content:flex-start}.team-card::before{content:'';position:absolute;top:48px;left:-28px;width:28px;height:2px;background-color:#e5e7eb}}
     </style>
 </head>
@@ -158,94 +137,122 @@
     <p class="text-lg text-gray-600 max-w-3xl mx-auto">Kami didukung oleh tim profesional yang berdedikasi untuk kesuksesan Anda.</p>
   </div>
 
-  <div class="team-grid">
+  <section id="team" class="pt-24 pb-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tim di Balik LKP NexGen</h2>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Kami didukung oleh tim profesional yang berdedikasi untuk kesuksesan Anda.</p>
+            </div>
 
-    <!-- Ketua -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/faizal.jpg" alt="Foto Faizal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">FAIZAL ARYA PUTU N</h3>
-      <p class="text-blue-600 font-medium mb-3">CEO of LKP-NexGen</p>
-      <p class="text-gray-600 text-sm mb-4">Faizal merancang kurikulum yang relevan dengan kebutuhan industri terkini.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/faizal.jpg" alt="Foto Faizal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">FAIZAL ARYA PUTU N</h3>
+                            <p class="text-blue-600 font-medium mb-3">CEO of LKP-NexGen</p>
+                            <p class="text-gray-600 text-sm mb-4">Faizal merancang kurikulum yang relevan dengan kebutuhan industri terkini.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Sekretaris -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/Fara.JPG" alt="Foto Fara" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">FARA DIANA OLIFIANI</h3>
-      <p class="text-blue-600 font-medium mb-3">Sekretaris</p>
-      <p class="text-gray-600 text-sm mb-4">Fara membantu calon siswa memilih program yang paling sesuai karir mereka.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/Suci.JPG" alt="Foto Suci Amelia" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">SUCI AMELIA ARIFIN</h3>
+                            <p class="text-blue-600 font-medium mb-3">Bendahara</p>
+                            <p class="text-gray-600 text-sm mb-4">Suci mengatur keuangan dan administrasi yang praktis dalam setiap sesi pelatihan.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/Fara.JPG" alt="Foto Fara" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">FARA DIANA OLIFIANI</h3>
+                            <p class="text-blue-600 font-medium mb-3">Sekretaris</p>
+                            <p class="text-gray-600 text-sm mb-4">Fara membantu calon siswa memilih program yang paling sesuai karir mereka.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Bendahara -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/Suci.JPG" alt="Foto Suci Amelia" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">SUCI AMELIA ARIFIN</h3>
-      <p class="text-blue-600 font-medium mb-3">Bendahara</p>
-      <p class="text-gray-600 text-sm mb-4">Suci mengatur keuangan dan administrasi yang praktis dalam setiap sesi pelatihan.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/Ekal.jpg" alt="Foto Ekal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">EKAL ARGA FRAIZY</h3>
+                            <p class="text-blue-600 font-medium mb-3">Personalia dan Hubungan Industri</p>
+                            <p class="text-gray-600 text-sm mb-4">Ekal bertanggung jawab atas strategi pemasaran dan promosi LKP NexGen.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Personalia -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/Ekal.jpg" alt="Foto Ekal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">EKAL ARGA FRAIZY</h3>
-      <p class="text-blue-600 font-medium mb-3">Personalia & Hubungan Industri</p>
-      <p class="text-gray-600 text-sm mb-4">Ekal bertanggung jawab atas strategi pemasaran dan promosi LKP NexGen.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/latief.jpg" alt="Foto Latif" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">LATIF AKBAR MAULANA</h3>
+                            <p class="text-blue-600 font-medium mb-3"> Departement IT Support</p>
+                            <p class="text-gray-600 text-sm mb-4">Latif membangun jaringan kerjasama dengan berbagai perusahaan ternama.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Departemen IT -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/latief.jpg" alt="Foto Latif" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">LATIF AKBAR MAULANA</h3>
-      <p class="text-blue-600 font-medium mb-3">Departemen IT Support</p>
-      <p class="text-gray-600 text-sm mb-4">Latif membangun jaringan kerjasama dengan berbagai perusahaan ternama.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/Af.jpg" alt="Foto Afdhal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">AFDHAL FAUZAN</h3>
+                            <p class="text-blue-600 font-medium mb-3">IT Support</p>
+                            <p class="text-gray-600 text-sm mb-4">Afdhal memastikan semua infrastruktur teknologi berjalan lancar dan aman.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- IT Support -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/Af.jpg" alt="Foto Afdhal" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">AFDHAL FAUZAN</h3>
-      <p class="text-blue-600 font-medium mb-3">IT Support</p>
-      <p class="text-gray-600 text-sm mb-4">Afdhal memastikan semua infrastruktur teknologi berjalan lancar dan aman.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
+                    <img src="images/Kiki.JPG" alt="Foto Risky" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
+                    <div class="team-card-content">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900"> RISKY BAYU ADITYA</h3>
+                            <p class="text-blue-600 font-medium mb-3">Desain &amp; Kreatif</p>
+                            <p class="text-gray-600 text-sm mb-4"> Riky mengelola Editing dan Desain secara efisien.</p>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Desain & Kreatif -->
-    <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover team-card">
-      <img src="images/Kiki.JPG" alt="Foto Risky" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-      <h3 class="text-xl font-bold text-gray-900">RISKY BAYU ADITYA</h3>
-      <p class="text-blue-600 font-medium mb-3">Desain & Kreatif</p>
-      <p class="text-gray-600 text-sm mb-4">Risky mengelola editing dan desain secara efisien.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
     <section id="programs" class="py-16 bg-white">
