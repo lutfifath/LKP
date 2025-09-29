@@ -42,6 +42,34 @@
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -50,10 +78,17 @@
     <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <div class="text-xl font-bold text-purple-600">LKP NexGen</div>
+                <div class="logo-container">
+    <div class="logo-icon">
+        <img src="images/logo.png" alt="Logo LKP NexGen" class="w-10 h-10">
+    </div>
+    <div class="text-xl font-bold text-purple-600">LKP NexGen</div>
+</div>
+
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-purple-600">Beranda</a>
                     <a href="#program" class="text-gray-700 hover:text-purple-600">Program</a>
+                    <a href="event.html" class="text-gray-700 hover:text-purple-600">Event</a>
                     <a href="#keunggulan" class="text-gray-700 hover:text-purple-600">Keunggulan</a>
                     <a href="#kontak" class="btn-primary text-white px-5 py-2 rounded-lg text-sm">Daftar</a>
                 </div>
@@ -66,6 +101,7 @@
             <div class="px-4 py-3 space-y-2 bg-white border-t">
                 <a href="#home" class="block py-2 text-gray-700">Beranda</a>
                 <a href="#program" class="block py-2 text-gray-700">Program</a>
+                <a href="event.html" class="block py-2 text-gray-700">Event</a>
                 <a href="#keunggulan" class="block py-2 text-gray-700">Keunggulan</a>
                 <a href="#kontak" class="block py-2 text-purple-600 font-medium">Daftar</a>
             </div>
@@ -125,7 +161,7 @@
                         <i class="far fa-clock mr-1"></i> 12 Minggu
                     </div>
                     <div class="text-2xl font-bold text-purple-600 mb-3">Rp 4.5jt</div>
-                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                    <a href="kontak.html" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
                 </div>
 
                 <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
@@ -138,7 +174,7 @@
                         <i class="far fa-clock mr-1"></i> 16 Minggu
                     </div>
                     <div class="text-2xl font-bold text-purple-600 mb-3">Rp 5.8jt</div>
-                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                    <a href="kontak.html" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
                 </div>
 
                 <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
@@ -151,7 +187,7 @@
                         <i class="far fa-clock mr-1"></i> 10 Minggu
                     </div>
                     <div class="text-2xl font-bold text-purple-600 mb-3">Rp 3.9jt</div>
-                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                    <a href="kontak.html" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
                 </div>
 
                 <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
@@ -164,8 +200,16 @@
                         <i class="far fa-clock mr-1"></i> 10 Minggu
                     </div>
                     <div class="text-2xl font-bold text-purple-600 mb-3">Rp 3.9jt</div>
-                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                    <a href="kontak.html" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
                 </div>
+            </div>
+
+            <!-- Tombol Lihat Program -->
+            <div class="text-center mt-12">
+                <button onclick="openProgramPage()" class="btn-primary text-white px-8 py-3 rounded-lg font-medium pulse-animation">
+                    <i class="fas fa-eye mr-2"></i>Lihat Semua Program
+                </button>
+                <p class="text-sm text-gray-500 mt-2">Jelajahi program pelatihan lengkap kami</p>
             </div>
         </div>
     </section>
@@ -348,7 +392,12 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="text-lg font-bold mb-3">LKP NexGen</h3>
+                    <div class="logo-container">
+    <div class="logo-icon">
+        <img src="images/logo.png" alt="Logo LKP NexGen" class="w-10 h-10">
+    </div>
+    <div class="text-xl font-bold text-purple-600">LKP NexGen</div>
+</div>
                     <p class="text-gray-400 text-sm">Pelatihan profesional untuk pengembangan karir Anda</p>
                 </div>
                 <div>
@@ -390,10 +439,216 @@
         </div>
     </footer>
 
+    <!-- Program Detail Modal -->
+    <div id="programModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl p-8 m-4 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">Semua Program Pelatihan</h2>
+                <button onclick="closeProgramPage()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Digital Marketing -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bullhorn text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Digital Marketing</h3>
+                    <p class="text-sm text-gray-600 mb-3">Pelajari strategi pemasaran digital terkini, SEO, SEM, social media marketing, dan analytics</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Google Ads & Facebook Ads</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>SEO & Content Marketing</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Analytics & Reporting</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>12 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 4.5jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Komputer Dasar -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Komputer Dasar</h3>
+                    <p class="text-sm text-gray-600 mb-3">Dasar-dasar penggunaan komputer, Microsoft Office, dan pengenalan pemrograman</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Microsoft Office Suite</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Internet & Email</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Dasar Pemrograman</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>16 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 5.8jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Sosial Media -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-share-alt text-pink-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Sosial Media</h3>
+                    <p class="text-sm text-gray-600 mb-3">Mengelola media sosial profesional untuk bisnis dan personal branding</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Content Strategy</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Community Management</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Social Media Tools</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>10 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 3.9jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Desain Grafis -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Desain Grafis</h3>
+                    <p class="text-sm text-gray-600 mb-3">Buat desain visual profesional dengan Adobe Creative Suite dan tools modern</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Adobe Photoshop & Illustrator</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Brand Identity Design</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>UI/UX Basics</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>10 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 3.9jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Web Development -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Web Development</h3>
+                    <p class="text-sm text-gray-600 mb-3">Membangun website modern dengan HTML, CSS, JavaScript, dan framework populer</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>HTML, CSS, JavaScript</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>React & Node.js</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Database & Deployment</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>20 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 7.5jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-pen-nib text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">UI/UX Design</h3>
+                    <p class="text-sm text-gray-600 mb-3">Desain pengalaman pengguna yang intuitif dan menarik untuk aplikasi dan website</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>User Research & Wireframing</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Figma & Adobe XD</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Prototyping & Testing</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>14 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 5.2jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Video Editing -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-video text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Video Editing</h3>
+                    <p class="text-sm text-gray-600 mb-3">Editing video profesional untuk konten YouTube, TikTok, dan media sosial</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Adobe Premiere Pro</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>After Effects Basics</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Color Grading & Audio</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>12 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 4.8jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Data Analytics -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-teal-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Data Analytics</h3>
+                    <p class="text-sm text-gray-600 mb-3">Analisis data untuk pengambilan keputusan bisnis yang tepat</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Excel & Power BI</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>SQL & Data Visualization</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Statistical Analysis</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>16 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 6.2jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="border border-gray-200 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-orange-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Mobile App Development</h3>
+                    <p class="text-sm text-gray-600 mb-3">Membuat aplikasi mobile Android dan iOS dengan React Native atau Flutter</p>
+                    <ul class="text-xs text-gray-500 mb-4 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>React Native/Flutter</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>API Integration</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>App Publishing</li>
+                    </ul>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i>24 Minggu</span>
+                        <span class="text-lg font-bold text-purple-600">Rp 8.9jt</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Mobile Menu
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Functions
+        function openProgramPage() {
+            document.getElementById('programModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProgramPage() {
+            document.getElementById('programModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('programModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProgramPage();
+            }
         });
 
         // Smooth Scroll
@@ -402,18 +657,16 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    document.getElementById('mobile-menu').classList.add('hidden');
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
                 }
             });
         });
-
-        // Form Submit
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Terima kasih! Pesan Anda telah dikirim. Tim kami akan segera menghubungi Anda.');
-            this.reset();
-        });
     </script>
+
 </body>
 </html>
