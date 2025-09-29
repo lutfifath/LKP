@@ -3,462 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LKP NexGen - Pelatihan Profesional Berkualitas</title>
-    <link rel="alternate" hreflang="id" href="https://website-anda.com/index.html" />
-    <link rel="alternate" hreflang="en" href="https://website-anda.com/index-en.html" />
-    <link rel="alternate" hreflang="x-default" href="https://website-anda.com/index.html" />
+    <title>LKP NexGen - Pelatihan Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body {font-family:'Poppins',sans-serif;scroll-behavior:smooth;opacity:0;animation:fadeIn .5s ease-in forwards}
-        body.fade-out{opacity:0;transition:opacity .4s ease-out}
-        @keyframes fadeIn{to{opacity:1}}
-        .card-hover{transition:all .3s ease}.card-hover:hover{transform:translateY(-5px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}.hero-gradient{background:linear-gradient(180deg,#3b82f6 0%,#dbeafe 100%)}.btn-gold{background:linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%)}.btn-blue{background:linear-gradient(135deg,#2563eb 0%,#1e40af 100%)}
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-simple {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-simple:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img src="images/logo.png" alt="Logo LPK Profesional" class="h-16 w-auto">
-                    </div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-purple-600">LKP NexGen</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600">Beranda</a>
+                    <a href="#program" class="text-gray-700 hover:text-purple-600">Program</a>
+                    <a href="#keunggulan" class="text-gray-700 hover:text-purple-600">Keunggulan</a>
+                    <a href="#kontak" class="btn-primary text-white px-5 py-2 rounded-lg text-sm">Daftar</a>
                 </div>
-                <div class="hidden lg:ml-6 lg:flex lg:items-center lg:space-x-8">
-                    <a href="#home" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Beranda</a>
-                    <a href="#about" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Tentang</a>
-                    <a href="#team" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Tim Kami</a>
-                    <a href="#programs" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Program</a>
-                    <a href="#facilities" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Fasilitas</a>
-                    <a href="#testimonials" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Testimoni</a>
-                    <a href="#contact" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Kontak</a>
-                </div>
-                <div class="flex items-center">
-                    <a href="index-en.html" class="lang-switcher inline-flex items-center justify-center p-2 rounded-md font-bold text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none">EN</a>
-                    <div class="-mr-2 flex items-center lg:hidden">
-                        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none" id="mobile-menu-button">
-                            <span class="sr-only">Open main menu</span>
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-                </div>
+                <button class="md:hidden" id="menu-btn">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
             </div>
         </div>
         <div class="hidden md:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Beranda</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Tentang</a>
-                <a href="#team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Tim Kami</a>
-                <a href="#programs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Program</a>
-                <a href="#facilities" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Fasilitas</a>
-                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Testimoni</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50">Kontak</a>
+            <div class="px-4 py-3 space-y-2 bg-white border-t">
+                <a href="#home" class="block py-2 text-gray-700">Beranda</a>
+                <a href="#program" class="block py-2 text-gray-700">Program</a>
+                <a href="#keunggulan" class="block py-2 text-gray-700">Keunggulan</a>
+                <a href="#kontak" class="block py-2 text-purple-600 font-medium">Daftar</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero-gradient text-white pb-48">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Kembangkan Skill Profesional Anda Bersama Kami</h1>
-                    <p class="text-lg md:text-xl mb-8 opacity-90">LKP NexGen menyediakan pelatihan berkualitas dengan sertifikasi resmi untuk meningkatkan kompetensi kerja Anda.</p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#programs" class="btn-gold text-white font-medium rounded-lg px-6 py-3 text-center transition-all hover:opacity-90 shadow-lg">Lihat Program</a>
-                        <a href="#contact" class="btn-blue text-white font-medium rounded-lg px-6 py-3 text-center transition-all hover:opacity-90 shadow-lg">Daftar Sekarang</a>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <img src="images/3.jpg" alt="Grup profesional sedang belajar di ruang kelas modern" class="rounded-lg shadow-2xl w-full h-auto">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="relative" style="margin-top:-9rem">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 md:p-8 rounded-xl text-center shadow-xl card-hover">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 -mt-12 md:-mt-16 border-4 border-white">
-                        <i class="fas fa-eye text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Visi</h3>
-                    <p class="text-gray-600">Menjadi lembaga pelatihan terdepan yang menghasilkan SDM berkualitas tinggi dan berdaya saing global.</p>
-                </div>
-                <div class="bg-white p-6 md:p-8 rounded-xl text-center shadow-xl card-hover">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 -mt-12 md:-mt-16 border-4 border-white">
-                        <i class="fas fa-bullseye text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Misi</h3>
-                    <p class="text-gray-600">Menyelenggarakan pelatihan berbasis kompetensi dengan standar industri dan sertifikasi resmi.</p>
-                </div>
-                <div class="bg-white p-6 md:p-8 rounded-xl text-center shadow-xl card-hover">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 -mt-12 md:-mt-16 border-4 border-white">
-                        <i class="fas fa-medal text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Keunggulan</h3>
-                    <p class="text-gray-600">Instruktur profesional, kurikulum update, fasilitas lengkap, dan jaringan industri yang luas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-
-    <section id="programs" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Program Pelatihan</h2>
-                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Pilih program yang sesuai dengan minat dan kebutuhan karir Anda.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="h-40 sm:h-48 overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8023b1c3-d99e-4fda-a9e8-76711094bdde.png" alt="Pelatihan komputer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 sm:p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Populer</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Digital Marketing</h3>
-                        <p class="text-gray-600 mb-4 h-16">Digital marketing adalah cara untuk meningkatkan penjualan melalui media digital.</p>
-                        <div class="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
-                            <span class="text-blue-600 font-bold">12 Minggu</span>
-                            <span class="text-gray-900 font-bold">Rp 4.500.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="h-40 sm:h-48 overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/201701ee-2a01-4fb2-9632-1f40c868c80c.png" alt="Pelatihan komputer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 mt-9">Komputer Dasar</h3>
-                        <p class="text-gray-600 mb-4 h-16">Pelatihan dasar pemrograman komputer untuk menjadi profesional IT.</p>
-                        <div class="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
-                            <span class="text-blue-600 font-bold">16 Minggu</span>
-                            <span class="text-gray-900 font-bold">Rp 5.800.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="h-40 sm:h-48 overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/053eaea2-00a9-4430-8040-6360eeb1153b.png" alt="Pelatihan sosial media" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 sm:p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Baru</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Sosial Media</h3>
-                        <p class="text-gray-600 mb-4 h-16">Pelatihan sertifikasi sosial media untuk menjadi profesional IT.</p>
-                        <div class="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
-                            <span class="text-blue-600 font-bold">10 Minggu</span>
-                            <span class="text-gray-900 font-bold">Rp 3.900.000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="h-40 sm:h-48 overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/053eaea2-00a9-4430-8040-6360eeb1153b.png" alt="Desain grafis" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 sm:p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Baru</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Desain Grafis</h3>
-                        <p class="text-gray-600 mb-4 h-16">Desain grafis untuk menjadi profesional IT.</p>
-                        <div class="flex items-center justify-between border-t border-gray-100 pt-4 mt-4">
-                            <span class="text-blue-600 font-bold">10 Minggu</span>
-                            <span class="text-gray-900 font-bold">Rp 3.900.000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="event.html" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800">
-                    Lihat Semua Program<i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="facilities" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Fasilitas Kami</h2>
-                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Didukung dengan fasilitas lengkap untuk mendukung proses belajar mengajar.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-laptop text-blue-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Lab Komputer</h3>
-                    <p class="text-gray-600">Komputer spesifikasi tinggi dengan software terkini.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-wifi text-blue-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Internet Cepat</h3>
-                    <p class="text-gray-600">Akses internet berkecepatan tinggi tanpa batas.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-book text-blue-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Perpustakaan</h3>
-                    <p class="text-gray-600">Koleksi buku dan materi referensi lengkap.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-user-tie text-blue-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Instruktur Profesional</h3>
-                    <p class="text-gray-600">Pengajar berpengalaman dan bersertifikasi internasional.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="pt-24 pb-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Struktur Organisasi LKP NexGen</h2>
-                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Tim profesional yang berdedikasi untuk kesuksesan Anda.</p>
-                <div class="flex justify-center mt-8 mb-4">
-                    <div class="flex text-yellow-400 text-2xl space-x-1">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm">Rating Tim Profesional Kami</p>
-            </div>
-            <div class="flex justify-center mb-12">
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center card-hover w-full max-w-md">
-                    <img src="images/faizal.jpg" alt="Foto Faizal" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-500">
-                    <h3 class="text-xl font-bold text-gray-900">FAIZAL ARYA PUTU N</h3>
-                    <p class="text-blue-600 font-semibold mb-3">CEO of LKP-NexGen</p>
-                    <p class="text-gray-600 text-sm mb-4">Faizal merancang kurikulum yang relevan dengan kebutuhan industri terkini.</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/Suci.JPG" alt="Foto Suci Amelia" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-lg font-bold text-gray-900">SUCI AMELIA ARIFIN</h3>
-                    <p class="text-blue-600 font-medium mb-3">Bendahara</p>
-                    <p class="text-gray-600 text-sm mb-4">Suci mengatur keuangan dan administrasi yang praktis dalam setiap sesi pelatihan.</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/Fara.JPG" alt="Foto Fara" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-lg font-bold text-gray-900">FARA DIANA OLIFIANI</h3>
-                    <p class="text-blue-600 font-medium mb-3">Sekretaris</p>
-                    <p class="text-gray-600 text-sm mb-4">Fara membantu calon siswa memilih program yang paling sesuai karir mereka.</p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/Ekal.jpg" alt="Foto Ekal" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-base font-bold text-gray-900">EKAL ARGA FRAIZY</h3>
-                    <p class="text-blue-600 font-medium text-sm mb-2">Personalia & Hubungan Industri</p>
-                    <p class="text-gray-600 text-xs mb-3">Ekal bertanggung jawab atas strategi pemasaran dan promosi LKP NexGen.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/latief.jpg" alt="Foto Latif" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-base font-bold text-gray-900">LATIF AKBAR MAULANA</h3>
-                    <p class="text-blue-600 font-medium text-sm mb-2">Departement IT Support</p>
-                    <p class="text-gray-600 text-xs mb-3">Latif membangun jaringan kerjasama dengan berbagai perusahaan ternama.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/Af.jpg" alt="Foto Afdhal" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-base font-bold text-gray-900">AFDHAL FAUZAN</h3>
-                    <p class="text-blue-600 font-medium text-sm mb-2">IT Support</p>
-                    <p class="text-gray-600 text-xs mb-3">Afdhal memastikan semua infrastruktur teknologi berjalan lancar dan aman.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 text-center card-hover">
-                    <img src="images/Kiki.JPG" alt="Foto Risky" class="w-20 h-20 rounded-full mx-auto mb-3 object-cover ring-4 ring-blue-100">
-                    <h3 class="text-base font-bold text-gray-900">RISKY BAYU ADITYA</h3>
-                    <p class="text-blue-600 font-medium text-sm mb-2">Desain & Kreatif</p>
-                    <p class="text-gray-600 text-xs mb-3">Riky mengelola Editing dan Desain secara efisien.</p>
-                    <div class="flex justify-center space-x-3">
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-600 text-sm"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Testimoni Alumni</h2>
-                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
-                
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
-                    <div class="flex items-center mb-4">
-                        <img src="images/alumni1.jpg" alt="Alumni 1" class="w-16 h-16 rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-900">Budi Santoso</h4>
-                            <p class="text-sm text-gray-600">Digital Marketing Specialist</p>
-                        </div>
-                    </div>
-                    <div class="flex text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
-                    <div class="flex items-center mb-4">
-                        <img src="images/alumni2.jpg" alt="Alumni 2" class="w-16 h-16 rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-900">Siti Nurhaliza</h4>
-                            <p class="text-sm text-gray-600">Graphic Designer</p>
-                        </div>
-                    </div>
-                    <div class="flex text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-md card-hover">
-                    <div class="flex items-center mb-4">
-                        <img src="images/alumni3.jpg" alt="Alumni 3" class="w-16 h-16 rounded-full object-cover mr-4">
-                        <div>
-                            <h4 class="font-bold text-gray-900">Ahmad Fauzi</h4>
-                            <p class="text-sm text-gray-600">Web Developer</p>
-                        </div>
-                    </div>
-                    <div class="flex text-yellow-400 mb-3">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Hubungi Kami</h2>
-                <div class="w-20 h-1 bg-yellow-500 mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ada pertanyaan? Jangan ragu untuk menghubungi kami.</p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white pt-24 pb-16 mt-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan nama lengkap" required>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Tingkatkan Skill Digital Anda</h1>
+                    <p class="text-lg mb-8 opacity-90">Pelatihan profesional dengan sertifikasi resmi untuk membangun karir impian Anda</p>
+                    <div class="flex gap-4">
+                        <a href="#program" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Lihat Program</a>
+                        <a href="#kontak" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition">Hubungi Kami</a>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 mt-12">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold">5000+</div>
+                            <div class="text-sm opacity-80">Alumni</div>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="nama@email.com" required>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold">50+</div>
+                            <div class="text-sm opacity-80">Program</div>
                         </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="08xxxxxxxxxx" required>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold">98%</div>
+                            <div class="text-sm opacity-80">Puas</div>
                         </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Pelatihan" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">Program Pelatihan</h2>
+                <p class="text-gray-600">Pilih program yang sesuai dengan minat Anda</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bullhorn text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Digital Marketing</h3>
+                    <p class="text-sm text-gray-600 mb-4">Strategi pemasaran digital modern</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="far fa-clock mr-1"></i> 12 Minggu
+                    </div>
+                    <div class="text-2xl font-bold text-purple-600 mb-3">Rp 4.5jt</div>
+                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Komputer Dasar</h3>
+                    <p class="text-sm text-gray-600 mb-4">Kuasai dasar pemrograman</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="far fa-clock mr-1"></i> 16 Minggu
+                    </div>
+                    <div class="text-2xl font-bold text-purple-600 mb-3">Rp 5.8jt</div>
+                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
+                    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-share-alt text-pink-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Sosial Media</h3>
+                    <p class="text-sm text-gray-600 mb-4">Kelola media sosial profesional</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="far fa-clock mr-1"></i> 10 Minggu
+                    </div>
+                    <div class="text-2xl font-bold text-purple-600 mb-3">Rp 3.9jt</div>
+                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 card-simple">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Desain Grafis</h3>
+                    <p class="text-sm text-gray-600 mb-4">Ciptakan desain profesional</p>
+                    <div class="text-sm text-gray-500 mb-4">
+                        <i class="far fa-clock mr-1"></i> 10 Minggu
+                    </div>
+                    <div class="text-2xl font-bold text-purple-600 mb-3">Rp 3.9jt</div>
+                    <a href="#kontak" class="block text-center bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Daftar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section id="keunggulan" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">Mengapa Pilih Kami?</h2>
+                <p class="text-gray-600">Keunggulan yang membuat kami berbeda</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chalkboard-teacher text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Instruktur Berpengalaman</h3>
+                    <p class="text-gray-600 text-sm">Tim pengajar profesional dengan sertifikasi internasional</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Sertifikasi Resmi</h3>
+                    <p class="text-gray-600 text-sm">Sertifikat yang diakui industri dan meningkatkan nilai karir</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-briefcase text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Koneksi Industri</h3>
+                    <p class="text-gray-600 text-sm">Jaringan luas dengan perusahaan untuk penempatan kerja</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">Testimoni Alumni</h2>
+                <p class="text-gray-600">Pengalaman nyata dari para alumni kami</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">"Pelatihan yang sangat membantu karir saya. Sekarang saya menjadi Digital Marketing Manager."</p>
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Budi" class="w-10 h-10 rounded-full mr-3">
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
-                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tulis pesan Anda..." required></textarea>
+                            <div class="font-bold text-sm">Budi Santoso</div>
+                            <div class="text-xs text-gray-500">Marketing Manager</div>
                         </div>
-                        <button type="submit" class="w-full btn-blue text-white font-medium rounded-lg px-6 py-3 transition-all hover:opacity-90 shadow-lg">Kirim Pesan</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">"Fasilitasnya lengkap dan instrukturnya sangat kompeten. Saya sangat puas dengan hasilnya."</p>
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Siti" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-bold text-sm">Siti Nurhaliza</div>
+                            <div class="text-xs text-gray-500">Freelance Designer</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">"Program yang terstruktur dengan baik. Setelah lulus langsung diterima kerja sebagai developer."</p>
+                    <div class="flex items-center">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Ahmad" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <div class="font-bold text-sm">Ahmad Fauzi</div>
+                            <div class="text-xs text-gray-500">Web Developer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-3">Hubungi Kami</h2>
+                <p class="text-gray-600">Siap memulai perjalanan belajar Anda?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                        <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                        <input type="tel" placeholder="Nomor Telepon" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                            <option>Pilih Program</option>
+                            <option>Digital Marketing</option>
+                            <option>Komputer Dasar</option>
+                            <option>Sosial Media</option>
+                            <option>Desain Grafis</option>
+                        </select>
+                        <textarea placeholder="Pesan Anda" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none"></textarea>
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Kirim Pesan</button>
                     </form>
                 </div>
+                
                 <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Alamat</h4>
-                                <p class="text-gray-600">Jl. Pendidikan No. 123, Jakarta Selatan, DKI Jakarta 12345</p>
-                            </div>
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Alamat</h4>
+                            <p class="text-gray-600 text-sm">Jl. Pendidikan No. 123, Jakarta Selatan</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-phone text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Telepon</h4>
-                                <p class="text-gray-600">+62 21 1234 5678</p>
-                                <p class="text-gray-600">+62 812 3456 7890</p>
-                            </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-phone text-green-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Telepon</h4>
+                            <p class="text-gray-600 text-sm">+62 21 1234 5678</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-envelope text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Email</h4>
-                                <p class="text-gray-600">info@lkpnexgen.com</p>
-                                <p class="text-gray-600">pendaftaran@lkpnexgen.com</p>
-                            </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-envelope text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Email</h4>
+                            <p class="text-gray-600 text-sm">info@lkpnexgen.com</p>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-clock text-blue-600 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 mb-2">Jam Operasional</h4>
-                                <p class="text-gray-600">Senin - Jumat: 08.00 - 17.00 WIB</p>
-                                <p class="text-gray-600">Sabtu: 08.00 - 14.00 WIB</p>
-                            </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-clock text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Jam Operasional</h4>
+                            <p class="text-gray-600 text-sm">Senin - Jumat: 08.00 - 17.00</p>
                         </div>
                     </div>
                 </div>
@@ -466,83 +343,76 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="images/logo.png" alt="Logo LPK NexGen" class="h-12 mb-4">
-                    <p class="text-gray-400 text-sm">Lembaga pelatihan profesional terpercaya untuk pengembangan kompetensi SDM Indonesia.</p>
+                    <h3 class="text-lg font-bold mb-3">LKP NexGen</h3>
+                    <p class="text-gray-400 text-sm">Pelatihan profesional untuk pengembangan karir Anda</p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Menu</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white text-sm">Beranda</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white text-sm">Tentang</a></li>
-                        <li><a href="#programs" class="text-gray-400 hover:text-white text-sm">Program</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white text-sm">Kontak</a></li>
+                    <h4 class="font-bold mb-3">Menu</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-white">Beranda</a></li>
+                        <li><a href="#program" class="hover:text-white">Program</a></li>
+                        <li><a href="#keunggulan" class="hover:text-white">Keunggulan</a></li>
+                        <li><a href="#kontak" class="hover:text-white">Kontak</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Program</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Digital Marketing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Komputer Dasar</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Sosial Media</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white text-sm">Desain Grafis</a></li>
+                    <h4 class="font-bold mb-3">Program</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Digital Marketing</li>
+                        <li>Komputer Dasar</li>
+                        <li>Sosial Media</li>
+                        <li>Desain Grafis</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Ikuti Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                    <h4 class="font-bold mb-3">Ikuti Kami</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
                             <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2025 LKP NexGen. All rights reserved.</p>
+            <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-400">
+                &copy; 2025 LKP NexGen. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Mobile Menu
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    const menu = document.getElementById('mobile-menu');
-                    if (!menu.classList.contains('hidden')) {
-                        menu.classList.add('hidden');
-                    }
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        document.querySelectorAll('.lang-switcher').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.body.classList.add('fade-out');
-                setTimeout(() => {
-                    window.location.href = this.getAttribute('href');
-                }, 400);
-            });
+        // Form Submit
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Tim kami akan segera menghubungi Anda.');
+            this.reset();
         });
     </script>
 </body>
