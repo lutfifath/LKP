@@ -32,7 +32,7 @@
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .logo-icon {
             width: 40px; height: 40px;
-            border-radius: 20px 20px 50% 50%;
+            border-radius: 8px;
             overflow: hidden;
         }
         .logo-icon img {
@@ -42,6 +42,12 @@
         }
         .pulse-animation { animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .semicircle-image {
+            border-radius: 50% 0 0 50%;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -91,9 +97,10 @@
                         <div class="text-center"><div class="text-3xl font-bold">98%</div><div class="text-sm opacity-80">Puas</div></div>
                     </div>
                 </div>
-                <div class="relative overflow-hidden">
-                    <div class="absolute inset-0 rounded-full" style="clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);"></div>
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="Pelatihan" class="w-full h-auto shadow-2xl" style="clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);">
+                <div class="relative h-96 -mr-12">
+                    <div class="absolute right-0 top-0 bottom-0 w-96 rounded-l-full overflow-hidden shadow-2xl">
+                        <img src="images/1.jpg" alt="Pelatihan" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,7 +133,7 @@
                     <div class="text-sm font-bold mb-3">Rp 500.000</div>
                     <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
-                <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80');">
+                <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://cdn.prod.website-files.com/65798185544a4aa785b21bff/66ea9b555f395049f15f60d5_ilustrasi-kebiasaan-untuk-menjadi-content-creator%2B%25281%2529.jpeg');">
                     <div class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-share-alt text-white text-xl"></i>
                     </div>
@@ -146,6 +153,12 @@
                     <div class="text-sm font-bold mb-3">Rp 800.000 / Rp 550.000</div>
                     <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
+            </div>
+            <div class="text-center mt-12">
+                <button onclick="openProgramPage()" class="btn-primary text-white px-8 py-3 rounded-lg font-medium pulse-animation">
+                    <i class="fas fa-eye mr-2"></i>Lihat Semua Program
+                </button>
+                <p class="text-sm text-gray-500 mt-2">Jelajahi program pelatihan lengkap kami</p>
             </div>
         </div>
     </section>
