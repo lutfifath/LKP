@@ -3,108 +3,314 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kontak & Kerjasama - LKP-NexGen</title>
+    <title>Kontak & Kerjasama - LKP NexGen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .gradient-bg { 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      }
+
+      nav {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 50;
+      }
+
+      nav .max-w-6xl {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+      }
+
+      .logo-text {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #667eea;
+      }
+
+      nav a {
+        color: #374151;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: #667eea;
+      }
+
+      .btn-primary { 
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+        color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: all 0.3s ease; 
+      }
+
+      .btn-primary:hover { 
+        transform: scale(1.05); 
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); 
+      }
+
+      #menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #374151;
+      }
+
+      @media (max-width: 1024px) {
+        #menu-btn {
+          display: block;
+        }
+      }
+
       .contact-hero {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
           url("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80");
         background-size: cover;
         background-position: center;
         color: white;
-        padding: 100px 0;
+        padding: 120px 20px;
         text-align: center;
+        margin-top: 64px;
       }
 
-      /* CONTACT METHODS SECTION */
+      .contact-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        font-weight: bold;
+      }
+
+      .contact-hero p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
       .contact-methods {
-        padding: 50px 0;
+        padding: 60px 20px;
+        background: white;
+      }
+
+      .contact-methods h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 16px;
+        color: #111827;
+      }
+
+      .contact-methods > p {
+        text-align: center;
+        color: #6b7280;
+        max-width: 700px;
+        margin: 0 auto 40px;
       }
 
       .contact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin: 50px 0;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin: 40px 0;
       }
 
       .contact-card {
         background: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
         text-align: center;
       }
 
       .contact-card:hover {
         transform: translateY(-10px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
       }
 
       .contact-icon {
         font-size: 2.5rem;
-        color: #4a6bff;
+        color: #667eea;
         margin-bottom: 20px;
       }
 
-      /* PARTNERSHIP SECTION */
+      .contact-card h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: #111827;
+      }
+
+      .contact-card p {
+        color: #6b7280;
+        margin-bottom: 16px;
+        font-size: 0.95rem;
+      }
+
+      .contact-card a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      .contact-card a:hover {
+        color: #764ba2;
+      }
+
       .partnership-section {
-        background: #f9f9f9;
-        padding: 50px 0;
+        background: #f9fafb;
+        padding: 60px 20px;
+      }
+
+      .partnership-section h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 16px;
+        color: #111827;
+      }
+
+      .partnership-section > p {
+        text-align: center;
+        color: #6b7280;
+        max-width: 800px;
+        margin: 0 auto 40px;
       }
 
       .partnership-steps {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        margin: 40px 0;
       }
 
       .step {
-        flex: 0 0 calc(25% - 20px);
         text-align: center;
-        margin-bottom: 30px;
       }
 
       .step-number {
-        background: #4a6bff;
+        background: #667eea;
         color: white;
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 15px;
+        margin: 0 auto 16px;
         font-weight: bold;
+        font-size: 1.25rem;
       }
 
-      /* REQUIREMENTS SECTION */
+      .step h4 {
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: #111827;
+      }
+
+      .step p {
+        color: #6b7280;
+        font-size: 0.95rem;
+      }
+
       .requirements {
         max-width: 800px;
-        margin: 30px auto;
+        margin: 40px auto;
         background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 32px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
-      /* CONTACT FORM SECTION */
+      .requirements h3 {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #111827;
+      }
+
+      .requirements h4 {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 12px;
+        color: #111827;
+      }
+
+      .requirements ul {
+        margin-bottom: 20px;
+        padding-left: 24px;
+      }
+
+      .requirements li {
+        margin-bottom: 8px;
+        color: #6b7280;
+      }
+
       .contact-form-section {
-        padding: 50px 0;
+        padding: 60px 20px;
+        background: white;
       }
 
       .contact-form-container {
         max-width: 800px;
         margin: 0 auto;
         background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 32px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form-container h2 {
+        text-align: center;
+        margin-bottom: 12px;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #111827;
+      }
+
+      .contact-form-container > p {
+        text-align: center;
+        color: #6b7280;
+        margin-bottom: 32px;
       }
 
       .form-group {
@@ -115,6 +321,7 @@
         display: block;
         margin-bottom: 8px;
         font-weight: 600;
+        color: #111827;
       }
 
       .form-group input,
@@ -122,67 +329,119 @@
       .form-group select {
         width: 100%;
         padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
         font-size: 1rem;
+        font-family: 'Inter', sans-serif;
       }
 
       .form-group textarea {
         min-height: 150px;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
       }
 
       .submit-btn {
-        background: #4a6bff;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
         padding: 12px 30px;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
         font-size: 1rem;
-        transition: background 0.3s;
+        font-weight: 600;
+        transition: all 0.3s;
+        width: 100%;
       }
 
       .submit-btn:hover {
-        background: #3a5bef;
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
       }
 
-      /* FAQ SECTION */
       .faq-section {
-        padding: 50px 0;
-        background: #f9f9f9;
+        padding: 60px 20px;
+        background: #f9fafb;
+      }
+
+      .faq-section h2 {
+        text-align: center;
+        margin-bottom: 16px;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #111827;
+      }
+
+      .faq-section > p {
+        text-align: center;
+        color: #6b7280;
+        max-width: 700px;
+        margin: 0 auto 40px;
       }
 
       .faq-item {
         margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #e5e7eb;
         padding-bottom: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .faq-question {
-        font-weight: bold;
-        font-size: 1.2rem;
+        font-weight: 600;
+        font-size: 1.1rem;
         margin-bottom: 10px;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: #111827;
+        transition: color 0.3s;
+      }
+
+      .faq-question:hover {
+        color: #667eea;
       }
 
       .faq-answer {
         display: none;
         padding: 10px 0;
+        color: #6b7280;
       }
 
-      /* MAP SECTION */
       .map-section {
-        padding: 0 0 50px;
+        padding: 60px 20px;
+        background: white;
+      }
+
+      .map-section h2 {
+        text-align: center;
+        margin-bottom: 16px;
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #111827;
+      }
+
+      .map-section > p {
+        text-align: center;
+        color: #6b7280;
+        max-width: 700px;
+        margin: 0 auto 40px;
       }
 
       .map-container {
         height: 400px;
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .map-container iframe {
@@ -191,63 +450,142 @@
         border: none;
       }
 
-      /* RESPONSIVE STYLES */
-      @media (max-width: 768px) {
-        .step {
-          flex: 0 0 calc(50% - 15px);
-        }
+      footer {
+        background-color: #1f2937;
+        color: white;
+        padding: 48px 20px 24px;
       }
 
-      @media (max-width: 480px) {
-        .step {
-          flex: 0 0 100%;
+      .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+        margin-bottom: 32px;
+      }
+
+      .footer-section h4 {
+        font-weight: bold;
+        margin-bottom: 16px;
+        color: white;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+        color: white;
+      }
+
+      .footer-logo span {
+        color: #ec4899;
+      }
+
+      .footer-description {
+        color: #d1d5db;
+        font-size: 0.875rem;
+        margin-bottom: 16px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .social-links a {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #374151;
+        padding-top: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        color: #9ca3af;
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 768px) {
+        .contact-hero {
+          padding: 80px 20px;
         }
 
-        .contact-hero {
-          padding: 80px 0;
+        .contact-hero h1 {
+          font-size: 2rem;
+        }
+
+        .partnership-steps {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
-  <body>
-    <!-- NAVBAR (Tidak diubah) -->
-    <header class="navbar">
-      <div class="container">
-        <div class="logo"><span>LKP</span>-NexGen</div>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="hamburger">☰</label>
-        <nav>
-          <a href="index.html">Beranda</a>
-          <a href="event.html">Event</a>
-          <a href="kontak.html" class="active">Kontak</a>
-        </nav>
-        <div class="navbar-right">
-          <a href="upload.html" class="btn-upload">
-            <i class="fas fa-plus"></i> Upload Event
-          </a>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <div class="logo-text">LKP NexGen</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="index.html">Beranda</a>
+            <a href="event.html">Event</a>
+            <a href="kontak.html" class="active">Kontak</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="upload.html" class="btn-primary hidden md:block">
+              <i class="fas fa-plus"></i> Upload Event
+            </a>
+            <button class="md:hidden" id="menu-btn"><i class="fas fa-bars text-gray-700"></i></button>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <!-- HERO SECTION (Tidak diubah) -->
     <section class="contact-hero">
       <div class="container">
         <h1>Hubungi Kami</h1>
-        <p>
-          Punya pertanyaan atau ingin bekerja sama dengan LKP_NexGen? Kami siap
-          membantu Anda.
-        </p>
+        <p>Punya pertanyaan atau ingin bekerja sama dengan LKP NexGen? Kami siap membantu Anda.</p>
       </div>
     </section>
 
-    <!-- CONTACT METHODS SECTION -->
     <section class="contact-methods">
       <div class="container">
-        <h2 style="text-align: center">Hubungi Kami dengan Berbagai Cara</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
-          Kami selalu siap membantu Anda melalui berbagai saluran komunikasi
-          yang tersedia
-        </p>
+        <h2>Hubungi Kami dengan Berbagai Cara</h2>
+        <p>Kami selalu siap membantu Anda melalui berbagai saluran komunikasi yang tersedia</p>
 
         <div class="contact-grid">
           <div class="contact-card">
@@ -273,33 +611,23 @@
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <h3>Kunjungi Kami</h3>
-            <p>Kantor pusat LKP-NexGen</p>
-            <address>
-              Jl. Sudirman No. 123, Jakarta Selatan, DKI Jakarta 12190
-            </address>
+            <p>Kantor pusat LKP NexGen</p>
+            <address>Jl. Sudirman No. 123, Jakarta Selatan, DKI Jakarta 12190</address>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PARTNERSHIP SECTION -->
     <section class="partnership-section">
       <div class="container">
-        <h2 style="text-align: center">Kerjasama & Media Partner</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px">
-          LKP membuka peluang kerjasama dengan berbagai pihak termasuk
-          event organizer, sponsor, media partner, dan komunitas. Mari
-          bersama-sama menciptakan ekosistem event yang lebih baik.
-        </p>
+        <h2>Kerjasama & Media Partner</h2>
+        <p>LKP NexGen membuka peluang kerjasama dengan berbagai pihak termasuk event organizer, sponsor, media partner, dan komunitas. Mari bersama-sama menciptakan ekosistem event yang lebih baik.</p>
 
         <div class="partnership-steps">
           <div class="step">
             <div class="step-number">1</div>
             <h4>Kirim Proposal</h4>
-            <p>
-              Ajukan proposal kerjasama melalui form kami atau email ke
-              partnership@lkp-nexgen.id
-            </p>
+            <p>Ajukan proposal kerjasama melalui form kami atau email ke partnership@lkp-nexgen.id</p>
           </div>
 
           <div class="step">
@@ -317,61 +645,42 @@
           <div class="step">
             <div class="step-number">4</div>
             <h4>Penandatanganan</h4>
-            <p>
-              Jika disetujui, kita akan lanjut ke tahap penandatanganan
-              kerjasama
-            </p>
+            <p>Jika disetujui, kita akan lanjut ke tahap penandatanganan kerjasama</p>
           </div>
         </div>
 
         <div class="requirements">
-          <h3 style="text-align: center; margin-top: 50px">Syarat Kerjasama</h3>
+          <h3>Syarat Kerjasama</h3>
 
           <h4>Untuk Event Organizer:</h4>
-          <ul style="margin-bottom: 20px">
-            <li>
-              Memiliki legalitas usaha (CV/PT) atau surat keterangan dari
-              komunitas
-            </li>
-            <li>
-              Memiliki pengalaman menyelenggarakan minimal 3 event sebelumnya
-            </li>
+          <ul>
+            <li>Memiliki legalitas usaha (CV/PT) atau surat keterangan dari komunitas</li>
+            <li>Memiliki pengalaman menyelenggarakan minimal 3 event sebelumnya</li>
             <li>Menyediakan informasi event yang lengkap dan akurat</li>
           </ul>
 
           <h4>Untuk Sponsor:</h4>
-          <ul style="margin-bottom: 20px">
-            <li>
-              Produk/jasa yang ditawarkan relevan dengan target peserta event
-            </li>
+          <ul>
+            <li>Produk/jasa yang ditawarkan relevan dengan target peserta event</li>
             <li>Bersedia mematuhi ketentuan sponsorship yang berlaku</li>
-            <li>Menyediakan materi promosi sesuai standar EventHub</li>
+            <li>Menyediakan materi promosi sesuai standar LKP NexGen</li>
           </ul>
 
           <h4>Untuk Media Partner:</h4>
           <ul>
             <li>Memiliki audiens yang relevan dengan target peserta event</li>
-            <li>
-              Bersedia mempromosikan event melalui kanal media yang dimiliki
-            </li>
-            <li>
-              Memiliki trafik pengunjung minimal 10.000/bulan (untuk media
-              online)
-            </li>
+            <li>Bersedia mempromosikan event melalui kanal media yang dimiliki</li>
+            <li>Memiliki trafik pengunjung minimal 10.000/bulan (untuk media online)</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT FORM SECTION -->
     <section class="contact-form-section">
       <div class="container">
         <div class="contact-form-container">
-          <h2 style="text-align: center">Formulir Kontak</h2>
-          <p style="text-align: center; margin-bottom: 40px">
-            Isi formulir berikut untuk pertanyaan, masukan, atau permintaan
-            kerjasama
-          </p>
+          <h2>Formulir Kontak</h2>
+          <p>Isi formulir berikut untuk pertanyaan, masukan, atau permintaan kerjasama</p>
 
           <form>
             <div class="form-group">
@@ -406,35 +715,24 @@
               <textarea id="message" required></textarea>
             </div>
 
-            <div style="text-align: center">
-              <button type="submit" class="submit-btn">Kirim Pesan</button>
-            </div>
+            <button type="submit" class="submit-btn">Kirim Pesan</button>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- FAQ SECTION -->
     <section class="faq-section">
       <div class="container">
-        <h2 style="text-align: center">Pertanyaan yang Sering Diajukan</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
-          Temukan jawaban atas pertanyaan umum seputar EventHub dan layanan kami
-        </p>
+        <h2>Pertanyaan yang Sering Diajukan</h2>
+        <p>Temukan jawaban atas pertanyaan umum seputar LKP NexGen dan layanan kami</p>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>Bagaimana cara menjadi mitra EventHub?</span>
+            <span>Bagaimana cara menjadi mitra LKP NexGen?</span>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>
-              Anda dapat mengajukan permohonan kerjasama melalui formulir di
-              halaman ini atau mengirim email langsung ke
-              partnership@eventhub.id dengan subjek "Permohonan Kerjasama".
-              Pastikan untuk menyertakan profil organisasi/perusahaan Anda dan
-              proposal kerjasama yang diinginkan.
-            </p>
+            <p>Anda dapat mengajukan permohonan kerjasama melalui formulir di halaman ini atau mengirim email langsung ke partnership@lkp-nexgen.id dengan subjek "Permohonan Kerjasama". Pastikan untuk menyertakan profil organisasi/perusahaan Anda dan proposal kerjasama yang diinginkan.</p>
           </div>
         </div>
 
@@ -444,55 +742,36 @@
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>
-              Tim kami akan merespon permintaan kerjasama dalam waktu 3-5 hari
-              kerja setelah proposal diterima. Untuk periode tertentu seperti
-              menjelang event besar, waktu respon mungkin sedikit lebih lama.
-            </p>
+            <p>Tim kami akan merespon permintaan kerjasama dalam waktu 3-5 hari kerja setelah proposal diterima. Untuk periode tertentu seperti menjelang event besar, waktu respon mungkin sedikit lebih lama.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>Apa keuntungan menjadi media partner LKP?</span>
+            <span>Apa keuntungan menjadi media partner LKP NexGen?</span>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>
-              Sebagai media partner, Anda akan mendapatkan eksposur kepada
-              audiens LKP, akses ke data peserta LKP (dengan
-              persetujuan), kesempatan untuk menampilkan konten eksklusif, dan
-              komisi untuk setiap penjualan tiket yang berasal dari referensi
-              Anda.
-            </p>
+            <p>Sebagai media partner, Anda akan mendapatkan eksposur kepada audiens LKP NexGen, akses ke data peserta LKP NexGen (dengan persetujuan), kesempatan untuk menampilkan konten eksklusif, dan komisi untuk setiap penjualan tiket yang berasal dari referensi Anda.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>Apakah LKP menyediakan layanan event management?</span>
+            <span>Apakah LKP NexGen menyediakan layanan event management?</span>
             <i class="fas fa-chevron-down"></i>
           </div>
           <div class="faq-answer">
-            <p>
-              Ya, kami menyediakan layanan event management lengkap mulai dari
-              perencanaan, promosi, pendaftaran peserta, hingga pelaporan.
-              Silakan hubungi kami untuk diskusi lebih lanjut tentang kebutuhan
-              spesifik event Anda.
-            </p>
+            <p>Ya, kami menyediakan layanan event management lengkap mulai dari perencanaan, promosi, pendaftaran peserta, hingga pelaporan. Silakan hubungi kami untuk diskusi lebih lanjut tentang kebutuhan spesifik event Anda.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MAP SECTION -->
     <section class="map-section">
       <div class="container">
-        <h2 style="text-align: center">Kunjungi Kantor Kami</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px">
-          Kami berada di lokasi strategis di Jakarta. Silakan datang untuk
-          pertemuan bisnis setelah membuat janji terlebih dahulu.
-        </p>
+        <h2>Kunjungi Kantor Kami</h2>
+        <p>Kami berada di lokasi strategis di Jakarta. Silakan datang untuk pertemuan bisnis setelah membuat janji terlebih dahulu.</p>
 
         <div class="map-container">
           <iframe
@@ -504,143 +783,65 @@
       </div>
     </section>
 
-    <!-- FOOTER (Tidak diubah) -->
-    <footer class="site-footer" aria-label="Footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="footer-logo">
-              <span aria-hidden="true">🎉</span>
-              <h3>EventHub</h3>
-            </div>
-            <p class="footer-description">
-              Platform terbaik untuk menemukan dan mengelola event yang sesuai
-              dengan minat dan kebutuhan Anda.
-            </p>
-            <div class="footer-social">
-              <h4 class="social-title">Ikuti Kami</h4>
-              <ul class="social-links" role="list">
-                <li>
-                  <a href="#" aria-label="Instagram EventHub">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="Twitter EventHub">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="Facebook EventHub">
-                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="LinkedIn EventHub">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="YouTube EventHub">
-                    <i class="fab fa-youtube" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="footer-links">
-            <h4 class="footer-heading">Navigasi</h4>
-            <ul role="list">
-              <li><a href="index.html">Beranda</a></li>
-              <li><a href="event.html">Event</a></li>
-              <li><a href="about.html">Tentang Kami</a></li>
-              <li><a href="kontak.html">Kontak</a></li>
-              <li><a href="upload.html">Upload Event</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links">
-            <h4 class="footer-heading">Kategori</h4>
-            <ul role="list">
-              <li><a href="event.html?category=workshop">Workshop</a></li>
-              <li><a href="event.html?category=seminar">Seminar</a></li>
-              <li><a href="event.html?category=conference">Konferensi</a></li>
-              <li><a href="event.html?category=concert">Konser</a></li>
-              <li><a href="event.html?category=exhibition">Pameran</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-newsletter">
-            <h4 class="footer-heading">Berlangganan Newsletter</h4>
-            <p>Dapatkan update event terbaru langsung ke email Anda</p>
-            <form
-              class="newsletter-form"
-              aria-label="Form berlangganan newsletter"
-            >
-              <div class="input-group">
-                <input
-                  type="email"
-                  placeholder="Alamat email Anda"
-                  aria-label="Masukkan alamat email"
-                  required
-                />
-                <button
-                  type="submit"
-                  class="btn-subscribe"
-                  aria-label="Berlangganan"
-                >
-                  <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-            <div class="payment-methods">
-              <h4 class="footer-heading">Metode Pembayaran</h4>
-              <div class="payment-icons">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/196/196578.png"
-                  alt="Visa"
-                  width="40"
-                  height="25"
-                />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/196/196561.png"
-                  alt="Mastercard"
-                  width="40"
-                  height="25"
-                />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/825/825454.png"
-                  alt="PayPal"
-                  width="40"
-                  height="25"
-                />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/825/825462.png"
-                  alt="OVO"
-                  width="40"
-                  height="25"
-                />
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/825/825463.png"
-                  alt="Gopay"
-                  width="40"
-                  height="25"
-                />
-              </div>
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-section">
+          <div class="footer-logo"><span>lkp</span>nexgen</div>
+          <p class="footer-description">Platform terbaik untuk menemukan dan mengelola event yang sesuai dengan minat dan kebutuhan Anda.</p>
+          <div>
+            <h4 style="margin-bottom: 12px;">Ikuti Kami</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <div class="footer-legal">
-            <p>&copy; 2023 EventHub. Seluruh hak cipta dilindungi.</p>
-            <ul class="legal-links" role="list">
-              <li><a href="privacy.html">Kebijakan Privasi</a></li>
-              <li><a href="terms.html">Syarat & Ketentuan</a></li>
-              <li><a href="cookies.html">Kebijakan Cookie</a></li>
-            </ul>
-          </div>
+        <div class="footer-section footer-links">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li><a href="about.html">Tentang Kami</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            <li><a href="upload.html">Upload Event</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section footer-links">
+          <h4>Kategori</h4>
+          <ul>
+            <li><a href="event.html?category=workshop">Workshop</a></li>
+            <li><a href="event.html?category=seminar">Seminar</a></li>
+            <li><a href="event.html?category=conference">Konferensi</a></li>
+            <li><a href="event.html?category=concert">Konser</a></li>
+            <li><a href="event.html?category=exhibition">Pameran</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Berlangganan Newsletter</h4>
+          <p>Dapatkan update event terbaru langsung ke email Anda</p>
+          <form class="flex gap-2">
+            <input type="email" placeholder="Email Anda" class="flex-1 px-4 py-2 rounded-lg text-gray-900" />
+            <button type="submit" class="bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <p>&copy; 2025 LKP NexGen. Seluruh hak cipta dilindungi.</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+          <a href="privacy.html" style="color: #d1d5db; text-decoration: none; transition: color 0.3s;" class="hover:text-white">Kebijakan Privasi</a>
+          <a href="terms.html" style="color: #d1d5db; text-decoration: none; transition: color 0.3s;" class="hover:text-white">Syarat & Ketentuan</a>
+          <a href="cookies.html" style="color: #d1d5db; text-decoration: none; transition: color 0.3s;" class="hover:text-white">Kebijakan Cookie</a>
         </div>
       </div>
     </footer>
@@ -664,20 +865,23 @@
         });
       });
 
-      // Script untuk form submission (simulasi)
+      // Script untuk form submission
       const contactForm = document.querySelector("form");
-      if (contactForm) {
+      if (contactForm && contactForm.querySelectorAll("input").length > 1) {
         contactForm.addEventListener("submit", (e) => {
           e.preventDefault();
-          alert(
-            "Terima kasih atas pesan Anda! Tim kami akan segera menghubungi Anda."
-          );
+          alert("Terima kasih atas pesan Anda! Tim kami akan segera menghubungi Anda.");
           contactForm.reset();
+        });
+      }
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          alert('Menu mobile akan ditampilkan');
         });
       }
     </script>
   </body>
 </html>
-
-
-
