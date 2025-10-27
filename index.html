@@ -58,6 +58,86 @@
             height: 100%;
             object-fit: cover;
         }
+                /* Responsive Improvements */
+        @media (max-width: 1024px) {
+            .hero-image-container {
+                right: -300px;
+                width: 600px;
+                height: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-image-container {
+                display: none;
+            }
+            
+            section#home {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+            
+            .logo-container {
+                gap: 8px;
+            }
+            
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .logo-container .text-xl {
+                font-size: 1.125rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .card-simple {
+                min-height: 280px;
+            }
+            
+            section#home h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            section#home .text-lg {
+                font-size: 1rem;
+            }
+            
+            .grid.grid-cols-3 {
+                gap: 1rem;
+            }
+            
+            .grid.grid-cols-3 > div .text-4xl {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .logo-container .text-xl {
+                font-size: 1rem;
+            }
+            
+            section#home h1 {
+                font-size: 1.75rem;
+            }
+            
+            .grid.grid-cols-3 > div .text-4xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-4xl.font-bold {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -73,7 +153,7 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-purple-600">Beranda</a>
                     <a href="#program" class="text-gray-700 hover:text-purple-600">Program</a>
-                    <a href="#event" class="text-gray-700 hover:text-purple-600">Event</a>
+                    <a href="event.html" class="text-gray-700 hover:text-purple-600">Event</a>
                     <a href="#keunggulan" class="text-gray-700 hover:text-purple-600">Keunggulan</a>
                     <a href="#kontak" class="btn-primary text-white px-5 py-2 rounded-lg text-sm">Daftar</a>
                 </div>
@@ -84,7 +164,7 @@
             <div class="px-4 py-3 space-y-2 bg-white border-t">
                 <a href="#home" class="block py-2 text-gray-700">Beranda</a>
                 <a href="#program" class="block py-2 text-gray-700">Program</a>
-                <a href="#event" class="block py-2 text-gray-700">Event</a>
+                <a href="event.html" class="block py-2 text-gray-700">Event</a>
                 <a href="#keunggulan" class="block py-2 text-gray-700">Keunggulan</a>
                 <a href="#kontak" class="block py-2 text-purple-600 font-medium">Daftar</a>
             </div>
@@ -168,12 +248,6 @@
                     <div class="text-sm font-bold mb-3">Rp 800.000 / Rp 550.000</div>
                     <a href="#kontak" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
-            </div>
-            <div class="text-center mt-16">
-                <button onclick="openProgramPage()" class="btn-primary text-white px-8 py-3 rounded-lg font-medium pulse-animation">
-                    <i class="fas fa-eye mr-2"></i>Lihat Semua Program
-                </button>
-                <p class="text-sm text-gray-500 mt-2">Jelajahi program pelatihan lengkap kami</p>
             </div>
         </div>
     </section>
