@@ -42,17 +42,27 @@
         }
         .pulse-animation { animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        .semicircle-image {
+        .hero-image-container {
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 800px;
             border-radius: 50% 0 0 50%;
             overflow: hidden;
+            box-shadow: -20px 20px 60px rgba(0,0,0,0.2);
+        }
+        .hero-image-container img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <nav class="bg-white shadow-sm fixed top-0 w-full z-50">
-        <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="logo-container">
                     <div class="logo-icon">
@@ -63,7 +73,7 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-purple-600">Beranda</a>
                     <a href="#program" class="text-gray-700 hover:text-purple-600">Program</a>
-                    <a href="event.html" class="text-gray-700 hover:text-purple-600">Event</a>
+                    <a href="#event" class="text-gray-700 hover:text-purple-600">Event</a>
                     <a href="#keunggulan" class="text-gray-700 hover:text-purple-600">Keunggulan</a>
                     <a href="#kontak" class="btn-primary text-white px-5 py-2 rounded-lg text-sm">Daftar</a>
                 </div>
@@ -74,43 +84,48 @@
             <div class="px-4 py-3 space-y-2 bg-white border-t">
                 <a href="#home" class="block py-2 text-gray-700">Beranda</a>
                 <a href="#program" class="block py-2 text-gray-700">Program</a>
-                <a href="event.html" class="block py-2 text-gray-700">Event</a>
+                <a href="#event" class="block py-2 text-gray-700">Event</a>
                 <a href="#keunggulan" class="block py-2 text-gray-700">Keunggulan</a>
                 <a href="#kontak" class="block py-2 text-purple-600 font-medium">Daftar</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="gradient-bg text-white pt-24 pb-16 mt-16 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Tingkatkan Skill Digital Anda</h1>
-                    <p class="text-lg mb-8 opacity-90">Pelatihan profesional dengan sertifikasi resmi untuk membangun karir impian Anda</p>
-                    <div class="flex gap-4 flex-wrap">
-                        <a href="#program" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Lihat Program</a>
-                        <a href="#kontak" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition">Hubungi Kami</a>
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 mt-12">
-                        <div class="text-center"><div class="text-3xl font-bold">1000+</div><div class="text-sm opacity-80">Alumni</div></div>
-                        <div class="text-center"><div class="text-3xl font-bold">50+</div><div class="text-sm opacity-80">Program</div></div>
-                        <div class="text-center"><div class="text-3xl font-bold">98%</div><div class="text-sm opacity-80">Puas</div></div>
-                    </div>
+    <section id="home" class="gradient-bg text-white pt-24 pb-0 mt-16 relative overflow-visible h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 w-full relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">Tingkatkan Skill Digital Anda</h1>
+                <p class="text-lg mb-8 opacity-90 max-w-md">Pelatihan profesional dengan sertifikasi resmi untuk membangun karir impian Anda</p>
+                <div class="flex gap-4 flex-wrap mb-12">
+                    <a href="#program" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition">Lihat Program</a>
+                    <a href="#kontak" class="border-2 border-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition">Hubungi Kami</a>
                 </div>
-                <div class="hidden md:block relative h-96 -mr-12 -mb-16">
-                    <div class="absolute right-0 top-0 bottom-0 w-96 rounded-l-full overflow-hidden shadow-2xl">
-                        <img src="images/1.jpg" alt="Pelatihan" class="w-full h-full object-cover">
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <div class="text-4xl font-bold">1000+</div>
+                        <div class="text-sm opacity-80">Alumni</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold">50+</div>
+                        <div class="text-sm opacity-80">Program</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold">98%</div>
+                        <div class="text-sm opacity-80">Puas</div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="hidden lg:block hero-image-container">
+            <img src="images/1.jpg" alt="Pelatihan Profesional">
+        </div>
     </section>
 
-    <section id="program" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-3">Program Pelatihan</h2>
-                <p class="text-gray-600">Pilih program yang sesuai dengan minat Anda</p>
+    <section id="program" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-3">Program Pelatihan</h2>
+                <p class="text-gray-600 text-lg">Pilih program yang sesuai dengan minat Anda</p>
             </div>
             <div class="grid md:grid-cols-4 gap-6">
                 <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80');">
@@ -120,8 +135,8 @@
                     <h3 class="text-lg font-bold mb-2">Digital Marketing</h3>
                     <p class="text-sm mb-4 opacity-90">Strategi pemasaran digital modern</p>
                     <div class="text-sm mb-4 opacity-90"><i class="far fa-clock mr-1"></i> OFFLINE/ONLINE</div>
-                    <div class="text-sm font-bold mb-3" >Rp 750.000 / Rp 500.000</div>
-                    <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
+                    <div class="text-sm font-bold mb-3">Rp 750.000 / Rp 500.000</div>
+                    <a href="#kontak" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80');">
                     <div class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4">
@@ -131,7 +146,7 @@
                     <p class="text-sm mb-4 opacity-90">Kuasai dasar pemrograman</p>
                     <div class="text-sm mb-4 opacity-90"><i class="far fa-clock mr-1"></i> OFFLINE</div>
                     <div class="text-sm font-bold mb-3">Rp 500.000</div>
-                    <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
+                    <a href="#kontak" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://cdn.prod.website-files.com/65798185544a4aa785b21bff/66ea9b555f395049f15f60d5_ilustrasi-kebiasaan-untuk-menjadi-content-creator%2B%25281%2529.jpeg');">
                     <div class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4">
@@ -141,7 +156,7 @@
                     <p class="text-sm mb-4 opacity-90">Kelola media sosial profesional</p>
                     <div class="text-sm mb-4 opacity-90"><i class="far fa-clock mr-1"></i> OFFLINE/ONLINE</div>
                     <div class="text-sm font-bold mb-3">Rp 850.000 / Rp 600.000</div>
-                    <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
+                    <a href="#kontak" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-simple text-white" style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80');">
                     <div class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4">
@@ -151,10 +166,10 @@
                     <p class="text-sm mb-4 opacity-90">Ciptakan desain profesional</p>
                     <div class="text-sm mb-4 opacity-90"><i class="far fa-clock mr-1"></i> OFFLINE/ONLINE</div>
                     <div class="text-sm font-bold mb-3">Rp 800.000 / Rp 550.000</div>
-                    <a href="kontak.html" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
+                    <a href="#kontak" class="block text-center bg-white text-purple-600 py-2 rounded-lg hover:bg-gray-100 transition font-medium">Daftar</a>
                 </div>
             </div>
-            <div class="text-center mt-12">
+            <div class="text-center mt-16">
                 <button onclick="openProgramPage()" class="btn-primary text-white px-8 py-3 rounded-lg font-medium pulse-animation">
                     <i class="fas fa-eye mr-2"></i>Lihat Semua Program
                 </button>
@@ -163,11 +178,11 @@
         </div>
     </section>
 
-    <section id="keunggulan" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-3">Mengapa Pilih Kami?</h2>
-                <p class="text-gray-600">Keunggulan yang membuat kami berbeda</p>
+    <section id="keunggulan" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-3">Mengapa Pilih Kami?</h2>
+                <p class="text-gray-600 text-lg">Keunggulan yang membuat kami berbeda</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center">
@@ -195,52 +210,58 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-3">Testimoni Alumni</h2>
-                <p class="text-gray-600">Pengalaman nyata dari para alumni kami</p>
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-3">Testimoni Alumni</h2>
+                <p class="text-gray-600 text-lg">Pengalaman nyata dari para alumni kami</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-gray-50 p-6 rounded-xl">
                     <div class="flex text-yellow-400 mb-3">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 text-sm mb-4">"Pelatihan yang sangat membantu karir saya. Sekarang saya menjadi Digital Marketing Manager."</p>
+                    <p class="text-gray-700 text-sm mb-4">"Selama mengikuti pelatihan magang Digital Marketing dan Content Creator, saya menemukan banyak hal menarik, terutama dalam bidang Content Creator . 
+                        Awalnya, saya memiliki persepsi bahwa menjadi Content Creator hanya tentang mengedit video dan merekam tanpa aturan tertentu. 
+                        Namun, saya terkejut mengetahui bahwa semua itu berdasarkan strategi dan aturan yang jelas. 
+                        And then saya juga sangat berterima kasih kepada kaka' mentor yang ramah dan berpengalaman, sehingga proses pelatihannya  menjadi lebih menyenangkan dan efektif."</p>
                     <div class="flex items-center">
                         <img src="https://i.pravatar.cc/150?img=12" alt="Budi" class="w-10 h-10 rounded-full mr-3">
-                        <div><div class="font-bold text-sm">Budi Santoso</div><div class="text-xs text-gray-500">Marketing Manager</div></div>
+                        <div><div class="font-bold text-sm">welmy ratu</div><div class="text-xs text-gray-500">Marketing Manager</div></div>
                     </div>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-xl">
                     <div class="flex text-yellow-400 mb-3">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 text-sm mb-4">"Fasilitasnya lengkap dan instrukturnya sangat kompeten. Saya sangat puas dengan hasilnya."</p>
+                    <p class="text-gray-700 text-sm mb-4">"Dari program magang dan pelatihan inkubator bisnis bersama p4S di malang memberikan pengalaman yang begitu luar biasa bagi saya mahasiswa undana yang mendapat kesempatan untuk mengikuti program ini 
+                        dari segi materi yang begitu menarik setiap harinya sehingga kita sebagai mahasiswa tidak jenuh dengan materi yang itu-itu saja. 
+                        Bersama mentor-mentor yang kece badai pokonya ⭐⭐⭐⭐⭐ dehhh❤"</p>
                     <div class="flex items-center">
                         <img src="https://i.pravatar.cc/150?img=45" alt="Siti" class="w-10 h-10 rounded-full mr-3">
-                        <div><div class="font-bold text-sm">Siti Nurhaliza</div><div class="text-xs text-gray-500">Freelance Designer</div></div>
+                        <div><div class="font-bold text-sm">Farla zlovania</div><div class="text-xs text-gray-500">Freelance Designer</div></div>
                     </div>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-xl">
                     <div class="flex text-yellow-400 mb-3">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 text-sm mb-4">"Program yang terstruktur dengan baik. Setelah lulus langsung diterima kerja sebagai developer."</p>
+                    <p class="text-gray-700 text-sm mb-4">"Pelatihan digital marketing di lkpnexgen sangat bermanfaat dan membantu saya memahami konsep-konsep digital marketing yang terbaru. 
+                        Materi yang disampaikan sangat relevan dan instruktur yang berpengalaman membuat saya lebih mudah memahami strategi digital marketing yang efektif. Saya sangat puas dengan hasil pelatihan ini⭐⭐⭐⭐⭐"</p>
                     <div class="flex items-center">
                         <img src="https://i.pravatar.cc/150?img=33" alt="Ahmad" class="w-10 h-10 rounded-full mr-3">
-                        <div><div class="font-bold text-sm">Ahmad Fauzi</div><div class="text-xs text-gray-500">Web Developer</div></div>
+                        <div><div class="font-bold text-sm">nona pala</div><div class="text-xs text-gray-500">Web Developer</div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="kontak" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-3">Hubungi Kami</h2>
-                <p class="text-gray-600">Siap memulai perjalanan belajar Anda?</p>
+    <section id="kontak" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-3">Hubungi Kami</h2>
+                <p class="text-gray-600 text-lg">Siap memulai perjalanan belajar Anda?</p>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
@@ -249,7 +270,7 @@
                         <input type="email" placeholder="Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                         <input type="tel" placeholder="Nomor Telepon" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
                         <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none">
-                            <option>Pilih Program</option><option>Digital Marketing</option><option>Komputer Dasar</option><option>Sosial Media</option><option>Desain Grafis</option>
+                            <option>Pilih Program</option><option>Digital Marketing</option><option>Komputer Dasar</option><option>Content Creator</option><option>Desain Grafis</option>
                         </select>
                         <textarea placeholder="Pesan Anda" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none"></textarea>
                         <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">Kirim Pesan</button>
@@ -277,8 +298,8 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4">
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="logo-container mb-3">
@@ -301,7 +322,7 @@
                 <div>
                     <h4 class="font-bold mb-3">Program</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li>Digital Marketing</li><li>Komputer Dasar</li><li>Sosial Media</li><li>Desain Grafis</li>
+                        <li>Digital Marketing</li><li>Komputer Dasar</li><li>Content Creator</li><li>Desain Grafis</li>
                     </ul>
                 </div>
                 <div>
@@ -376,4 +397,3 @@
     </script>
 </body>
 </html>
-
