@@ -235,16 +235,16 @@
       background: white;
       padding: clamp(20px, 4vw, 32px);
       border-radius: clamp(12px, 2vw, 16px);
-      margin: clamp(-40px, -6vh, -50px) clamp(16px, 4vw, 24px) 0;
+      margin: clamp(40px, 6vh, 60px) auto;
       box-shadow: 0 10px 40px rgba(0,0,0,0.12);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 20vw, 180px), 1fr));
       gap: clamp(12px, 2vw, 16px);
       position: relative;
       z-index: 10;
-      max-width: calc(1280px - 48px);
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 1280px;
+      padding-left: clamp(16px, 4vw, 24px);
+      padding-right: clamp(16px, 4vw, 24px);
     }
 
     .filter-section input,
@@ -650,6 +650,7 @@
 
       .filter-section {
         grid-template-columns: 1fr;
+        margin: clamp(30px, 5vh, 40px) clamp(16px, 4vw, 24px);
       }
 
       .card-footer {
@@ -766,32 +767,32 @@
         </div>
       </div>
     </div>
-
-    <div class="filter-section">
-      <input type="text" placeholder="Kata kunci..." />
-      <select>
-        <option>Semua Kategori</option>
-        <option>Workshop</option>
-        <option>Seminar</option>
-        <option>Lomba</option>
-        <option>Konser</option>
-        <option>Pameran</option>
-      </select>
-      <select>
-        <option>Semua Tipe</option>
-        <option>Online</option>
-        <option>Offline</option>
-        <option>Hybrid</option>
-      </select>
-      <select>
-        <option>Semua Harga</option>
-        <option>Gratis</option>
-        <option>Berbayar</option>
-      </select>
-      <input type="date" />
-      <button><i class="fas fa-search"></i> Cari</button>
-    </div>
   </section>
+
+  <div class="filter-section">
+    <input type="text" placeholder="Kata kunci..." />
+    <select>
+      <option>Semua Kategori</option>
+      <option>Workshop</option>
+      <option>Seminar</option>
+      <option>Lomba</option>
+      <option>Konser</option>
+      <option>Pameran</option>
+    </select>
+    <select>
+      <option>Semua Tipe</option>
+      <option>Online</option>
+      <option>Offline</option>
+      <option>Hybrid</option>
+    </select>
+    <select>
+      <option>Semua Harga</option>
+      <option>Gratis</option>
+      <option>Berbayar</option>
+    </select>
+    <input type="date" />
+    <button><i class="fas fa-search"></i> Cari</button>
+  </div>
 
   <section id="events" class="main-container py-12">
     <h2 class="section-title">Event Minggu Ini</h2>
