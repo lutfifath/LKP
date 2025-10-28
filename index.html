@@ -96,6 +96,7 @@
             justify-content: space-between;
             align-items: center;
             height: 70px;
+            width: 100%;
         }
         
         nav a {
@@ -145,6 +146,10 @@
         }
         
         @media (max-width: 768px) {
+            nav .max-w-7xl {
+                padding: 0 16px;
+            }
+            
             #menu-btn {
                 display: block;
             }
@@ -154,7 +159,7 @@
             }
             
             #mobile-menu {
-                display: flex;
+                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 70px;
@@ -164,6 +169,10 @@
                 border-top: 1px solid #e5e7eb;
                 padding: 16px 0;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+            
+            #mobile-menu.active {
+                display: flex;
             }
             
             #mobile-menu a {
@@ -289,10 +298,75 @@
         @media (max-width: 1024px) {
             .hero-wrapper {
                 grid-template-columns: 1fr;
+                padding: 0 16px;
             }
             
             .hero-image-container {
                 display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section#home {
+                padding-top: 100px;
+                padding-bottom: 40px;
+                min-height: auto;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .btn-white,
+            .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 1.75rem;
+                margin-bottom: 16px;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-buttons {
+                margin-bottom: 30px;
+            }
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 40px 16px;
             }
         }
     </style>
@@ -462,8 +536,8 @@
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
                     <p class="text-gray-700 text-sm mb-4">"Dari program magang dan pelatihan inkubator bisnis bersama p4S di malang memberikan pengalaman yang begitu luar biasa bagi saya mahasiswa undana yang mendapat kesempatan untuk mengikuti program ini 
-                        dari segi materi yang begitu menarik setiap harinya sehingga kita sebagai mahasiswa tidak jenuh dengan materi yang itu-itu saja. 
-                        Bersama mentor-mentor yang kece badai pokonya ⭐⭐⭐⭐⭐ dehhh❤"</p>
+                        dari segi materi yang begitu menarik setiap harinya sehingga kita sebagai mahasiswa tidak jenuh dengan materi yang itu-itu saja. 
+                        Bersama mentor-mentor yang kece badai pokonya ⭐⭐⭐⭐⭐ dehhh❤"</p>
                     <div class="flex items-center">
                         <img src="https://i.pravatar.cc/150?img=45" alt="Testimoni" class="w-10 h-10 rounded-full mr-3">
                         <div><div class="font-bold text-sm">Farla Zlovania</div><div class="text-xs text-gray-500">Freelance Designer</div></div>
@@ -577,7 +651,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         
         menuBtn.addEventListener('click', () => {
-            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+            mobileMenu.classList.toggle('active');
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -587,7 +661,7 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     if (window.innerWidth <= 768) {
-                        mobileMenu.style.display = 'none';
+                        mobileMenu.classList.remove('active');
                     }
                 }
             });
