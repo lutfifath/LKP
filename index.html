@@ -697,7 +697,7 @@
                 if (!program || program === '') {
                     alert('⚠️ Silakan pilih program terlebih dahulu!');
                     return;
-                }
+                }else{
                 
                 // Format pesan untuk WhatsApp
                 const message = `Halo, saya ingin mendaftar program LKP NexGen%0A%0A*Nama:* ${nama}%0A*Email:* ${email}%0A*No. Telepon:* ${telepon}%0A*Program:* ${program}%0A*Pesan:* ${pesan}`;
@@ -714,10 +714,12 @@
                 // Reset form
                 this.reset();
             });
-        }
+        }            
+       }
     </script>
 </body>
 </html>
+
 
 
 
